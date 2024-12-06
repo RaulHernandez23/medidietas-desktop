@@ -2,6 +2,13 @@ module odiowpf.medidietasdesktop {
     requires javafx.controls;
     requires javafx.fxml;
 
+    requires com.google.common;
+    requires annotations.api;
+    requires io.grpc;
+    requires io.grpc.stub;
+    requires io.grpc.protobuf;
+    requires com.google.protobuf;
+    requires io.grpc.netty.shaded;
 
     opens odiowpf.medidietasdesktop to javafx.fxml;
     exports odiowpf.medidietasdesktop;
