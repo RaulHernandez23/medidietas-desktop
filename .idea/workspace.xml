@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/estilos.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Run_with_Gradlew_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +113,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Gradle.Run with Gradlew .executor": "Run",
+    "Gradle.gradlew.executor": "Run",
     "Gradle.medidietas-desktop [:ClienteImagenGrpc.main()].executor": "Run",
     "Gradle.medidietas-desktop [:HelloApplication.main()].executor": "Run",
     "Gradle.medidietas-desktop.executor": "Run",
@@ -131,10 +129,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.4643678",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "project.kotlinCompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -156,7 +154,7 @@
       <updated>1732660149141</updated>
       <workItem from="1732660150367" duration="1089000" />
       <workItem from="1733437749916" duration="6377000" />
-      <workItem from="1733447365646" duration="9466000" />
+      <workItem from="1733447365646" duration="10932000" />
     </task>
     <servers />
   </component>
