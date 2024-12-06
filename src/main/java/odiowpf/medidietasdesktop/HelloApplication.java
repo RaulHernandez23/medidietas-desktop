@@ -14,15 +14,9 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        UserAgentBuilder.builder().themes(JavaFXThemes.MODENA)
-                .themes(MaterialFXStylesheets.forAssemble(true))
-                .setDeploy(true)
-                .setResolveAssets(true)
-                .build()
-                .setGlobal();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("vistas/InicioSesion.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        scene.setFill(Color.TRANSPARENT);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("vistas/FXMLMenu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
