@@ -1,5 +1,6 @@
 package odiowpf.medidietasdesktop;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -19,19 +20,6 @@ public class HelloController {
 
         welcomeText.setText("Welcome to JavaFX Application!");
 
-        ClienteImagenGrpc cliente = new ClienteImagenGrpc();
-
-        byte[] imagenBytes = cliente.descargarImagen();
-
-        FileChooser fileChooser = new FileChooser();
-
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JPEG Images", "*.jpg", "*.jpeg"));
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Images", "*.png"));
-        File file = fileChooser.showSaveDialog(null);
-
-        if (file != null) {
-            guardarImagen(imagenBytes, file);
-        }
     }
 
     private void guardarImagen(byte[] imagenBytes, File archivo) {
@@ -65,5 +53,22 @@ public class HelloController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    public void botonPrueba(ActionEvent actionEvent) {
+//        ClienteImagenGrpc cliente = new ClienteImagenGrpc();
+//
+//        byte[] imagenBytes = cliente.descargarImagen();
+//
+//        FileChooser fileChooser = new FileChooser();
+//
+//        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JPEG Images", "*.jpg", "*.jpeg"));
+//        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Images", "*.png"));
+//        File file = fileChooser.showSaveDialog(null);
+//
+//        if (file != null) {
+//            guardarImagen(imagenBytes, file);
+//        }
     }
 }

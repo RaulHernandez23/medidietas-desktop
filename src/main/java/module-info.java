@@ -9,6 +9,7 @@ module odiowpf.medidietasdesktop {
     requires io.grpc.protobuf;
     requires com.google.protobuf;
     requires io.grpc.netty.shaded;
+    requires MaterialFX;
 
     opens odiowpf.medidietasdesktop to javafx.fxml;
     exports odiowpf.medidietasdesktop;
