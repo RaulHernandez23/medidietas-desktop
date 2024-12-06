@@ -1,17 +1,15 @@
-package odiowpf.medidietasdesktop;
+package odiowpf.medidietasdesktop.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.stage.FileChooser;
-import odiowpf.medidietasdesktop.grpcclient.ClienteImagenGrpc;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class HelloController {
+public class InicioSesionController {
     @FXML
     private Label welcomeText;
 

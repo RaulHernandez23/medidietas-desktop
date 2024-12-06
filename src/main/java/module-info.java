@@ -13,4 +13,6 @@ module odiowpf.medidietasdesktop {
 
     opens odiowpf.medidietasdesktop to javafx.fxml;
     exports odiowpf.medidietasdesktop;
+    exports odiowpf.medidietasdesktop.controladores;
+    opens odiowpf.medidietasdesktop.controladores to javafx.fxml;
 }

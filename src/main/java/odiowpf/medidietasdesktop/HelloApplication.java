@@ -20,8 +20,8 @@ public class HelloApplication extends Application {
                 .setResolveAssets(true)
                 .build()
                 .setGlobal();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("vistas/InicioSesion.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         scene.setFill(Color.TRANSPARENT);
         stage.setTitle("Hello!");
         stage.setScene(scene);
