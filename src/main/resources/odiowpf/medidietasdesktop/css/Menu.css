@@ -73,37 +73,22 @@
     -fx-text-fill: white;
 }
 
-.rootPane .sidebar .navbar .mfx-rectangle-toggle-node {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-border-color: transparent;
-    -fx-border-radius: 0;
-    -fx-pref-height: 40;
-
-    -fx-font-family: 'Open Sans SemiBold';
-    -fx-font-size: 13;
-    -fx-text-fill: white;
-}
-
-.rootPane .sidebar .navbar .mfx-rectangle-toggle-node .mfx-ripple-generator {
-    -mfx-paused: true;
-}
-
-.rootPane .sidebar .navbar .mfx-rectangle-toggle-node .mfx-icon-wrapper .mfx-font-icon {
-    -mfx-color: white;
-}
-
-.rootPane .sidebar .navbar .mfx-rectangle-toggle-node:selected {
-    -fx-background-color: white;
-    -fx-background-radius: 5;
-    -fx-text-fill: #601cbe;
-}
-
-.rootPane .sidebar .navbar .mfx-rectangle-toggle-node:selected .selection-rectangle {
-    -fx-stroke: transparent;
-    -fx-fill: #601cbe;
-}
 
 .rootPane .sidebar .navbar .mfx-rectangle-toggle-node:selected .mfx-icon-wrapper .mfx-font-icon {
-    -mfx-color: #601cbe;
+    -mfx-color: #1E68CC;
+}
+
+.rootPane .navButton {
+    -fx-background-color: -fx-azul;
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-font-family: 'Open Sans SemiBold';
+}
+.rootPane .navButton:hover {
+    -fx-background-color: white;
+    -fx-text-fill: -fx-azul;
+}
+
+.rootPane .icon {
+    -fx-fill: white;
 }

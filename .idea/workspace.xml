@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="fix(Run): agregado archivo de inicio para correr con gradlew">
-      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/Colores.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/Menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/imagenes/logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml" afterDir="false" />
+    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Menu): comenzada la ventana del menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/grpcclient/ClienteImagenGrpc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/grpc/ClienteImagenGrpc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/proto/imageService.proto" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/proto/imageService.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/Menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/Menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +166,8 @@
       <workItem from="1733437749916" duration="6377000" />
       <workItem from="1733447365646" duration="14223000" />
       <workItem from="1733500839868" duration="1579000" />
-      <workItem from="1733509988881" duration="4410000" />
+      <workItem from="1733509988881" duration="4640000" />
+      <workItem from="1733532309278" duration="4637000" />
     </task>
     <task id="LOCAL-00001" summary="fix(Run): agregado archivo de inicio para correr con gradlew">
       <option name="closed" value="true" />
@@ -182,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733460479728</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(Menu): comenzada la ventana del menu">
+      <option name="closed" value="true" />
+      <created>1733514672962</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733514672962</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +204,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix(Run): agregado archivo de inicio para correr con gradlew" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix(Run): agregado archivo de inicio para correr con gradlew" />
+    <MESSAGE value="feat(Menu): comenzada la ventana del menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Menu): comenzada la ventana del menu" />
   </component>
 </project>
