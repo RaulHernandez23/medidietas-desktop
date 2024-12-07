@@ -19,6 +19,4 @@ module odiowpf.medidietasdesktop {
     // Si necesitas abrir el paquete principal (para otros casos de reflexión)
     opens odiowpf.medidietasdesktop to javafx.fxml;
     exports odiowpf.medidietasdesktop;
-    exports odiowpf.medidietasdesktop.controladores;
-    opens odiowpf.medidietasdesktop.controladores to javafx.fxml;
 }
