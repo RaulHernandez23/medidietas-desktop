@@ -10,6 +10,8 @@ module odiowpf.medidietasdesktop {
     requires com.google.protobuf;
     requires io.grpc.netty.shaded;
     requires MaterialFX;
+    requires java.net.http;
+    requires org.json;
 
     exports odiowpf.medidietasdesktop.controladores;
 
@@ -19,4 +21,5 @@ module odiowpf.medidietasdesktop {
     // Si necesitas abrir el paquete principal (para otros casos de reflexión)
     opens odiowpf.medidietasdesktop to javafx.fxml;
     exports odiowpf.medidietasdesktop;
+    exports odiowpf.medidietasdesktop.modelos;
 }
