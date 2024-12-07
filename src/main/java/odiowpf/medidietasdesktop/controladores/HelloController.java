@@ -1,4 +1,4 @@
-package odiowpf.medidietasdesktop;
+package odiowpf.medidietasdesktop.controladores;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
