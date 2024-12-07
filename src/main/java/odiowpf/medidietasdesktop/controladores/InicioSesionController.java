@@ -8,10 +8,14 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
+import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
+import odiowpf.medidietasdesktop.utilidades.Constantes;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class InicioSesionController {
 
@@ -21,19 +25,24 @@ public class InicioSesionController {
     @FXML
     public void btnEntrar(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1280, 720);
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml"));
+//            Scene scene = new Scene(loader.load(), 1280, 720);
+//
+//            Stage stage = new Stage();
+//            stage.setTitle("Menú principal");
+//            stage.setResizable(false);
+//            stage.setScene(scene);
+//            stage.show();
+//
+//            Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
+//            stageActual.close();
+            HashMap<String, Object> respuesta = ExpertoNutricionDAO.logIn("lgomez@ejemplo.com", "contrasena123");
 
-            Stage stage = new Stage();
-            stage.setTitle("Menú principal");
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
-
-            Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
-            stageActual.close();
-        } catch (IOException ioEx) {
-            ioEx.printStackTrace();
+            if ((boolean) respuesta.get(Constantes.KEY_ERROR)) {
+                ExpertoNutricion experto = (ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
     }

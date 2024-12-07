@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Menu): agregados botones al Menu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" afterDir="false" />
+    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Alimentos): agregado uso de metodo Http">
+      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/ExpertoNutricion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/AlimentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/AlimentosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/InicioSesionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/InicioSesionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Alimento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Alimento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" afterDir="false" />
     </list>
@@ -107,7 +108,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -119,32 +120,32 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.Run with Gradlew .executor": "Run",
-    "Gradle.gradlew.executor": "Run",
-    "Gradle.medidietas-desktop [:ClienteImagenGrpc.main()].executor": "Run",
-    "Gradle.medidietas-desktop [:HelloApplication.main()].executor": "Run",
-    "Gradle.medidietas-desktop.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "raul",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.4643678",
-    "settings.editor.selected.configurable": "project.kotlinCompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Run with Gradlew .executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gradlew.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.medidietas-desktop [:ClienteImagenGrpc.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.medidietas-desktop [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.medidietas-desktop.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;raul&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.4643678&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.kotlinCompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wizar\Desktop\Repos\medidietas-desktop\src\main\resources\odiowpf\medidietasdesktop\imagenes" />
@@ -171,7 +172,8 @@
       <workItem from="1733447365646" duration="14223000" />
       <workItem from="1733500839868" duration="1579000" />
       <workItem from="1733509988881" duration="4640000" />
-      <workItem from="1733532309278" duration="19291000" />
+      <workItem from="1733532309278" duration="19398000" />
+      <workItem from="1733584299368" duration="7434000" />
     </task>
     <task id="LOCAL-00001" summary="fix(Run): agregado archivo de inicio para correr con gradlew">
       <option name="closed" value="true" />
@@ -197,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733544423233</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat(Alimentos): agregado uso de metodo Http">
+      <option name="closed" value="true" />
+      <created>1733556472092</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733556472092</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +240,7 @@
     <MESSAGE value="fix(Run): agregado archivo de inicio para correr con gradlew" />
     <MESSAGE value="feat(Menu): comenzada la ventana del menu" />
     <MESSAGE value="feat(Menu): agregados botones al Menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(Menu): agregados botones al Menu" />
+    <MESSAGE value="feat(Alimentos): agregado uso de metodo Http" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Alimentos): agregado uso de metodo Http" />
   </component>
 </project>

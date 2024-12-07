@@ -2,6 +2,7 @@ package odiowpf.medidietasdesktop.daos;
 
 import odiowpf.medidietasdesktop.modelos.Alimento;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
+import odiowpf.medidietasdesktop.utilidades.GestorToken;
 import org.json.JSONArray;
 
 import java.net.URI;
@@ -16,13 +17,13 @@ public class AlimentoDAO {
 
     private static final String RUTA = "alimentos/";
 
-    public static HashMap<String, Object> obtenerAlimentos(String token) {
+    public static HashMap<String, Object> obtenerAlimentos() {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
         String apiUrl = Constantes.URL_BASE + RUTA;
         HttpClient cliente = HttpClient.newHttpClient();
-        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl)).header("x-token", token).build();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl)).header("x-token", GestorToken.TOKEN).build();
 
         try{
             HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
@@ -32,6 +33,7 @@ public class AlimentoDAO {
 
             for (int i = 0; i < alimentosJson.length(); i++) {
                 Alimento alimento = new Alimento(
+                        alimentosJson.getJSONObject(i).getInt("id"),
                         alimentosJson.getJSONObject(i).getString("nombre"),
                         alimentosJson.getJSONObject(i).getInt("calorias"),
                         alimentosJson.getJSONObject(i).getDouble("carbohidratos"),
@@ -41,6 +43,7 @@ public class AlimentoDAO {
                         alimentosJson.getJSONObject(i).getDouble("tamano_racion"),
                         alimentosJson.getJSONObject(i).getBoolean("estado"),
                         alimentosJson.getJSONObject(i).getString("marca"),
+                        alimentosJson.getJSONObject(i).getInt("id_categoria"),
                         alimentosJson.getJSONObject(i).getInt("id_unidad_medida")
                 );
                 alimentos.add(alimento);
@@ -53,4 +56,5 @@ public class AlimentoDAO {
         }
         return respuesta;
     }
+
 }

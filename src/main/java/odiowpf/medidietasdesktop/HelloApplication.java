@@ -10,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import odiowpf.medidietasdesktop.daos.AlimentoDAO;
 import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.utilidades.GestorToken;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,21 +26,6 @@ public class HelloApplication extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-        HashMap<String, Object> resultado = AlimentoDAO.obtenerAlimentos("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTczMzU0OTk2NywiZXhwIjoxNzMzNTU3MTY3fQ.l7RY6alkiIqcSMILpygqCpRnlE2xwqV1bAFoAF9W4LI");
-        ArrayList<Alimento> alimentos = (ArrayList<Alimento>) resultado.get("objeto");
-        for (Alimento alimento : alimentos) {
-            System.out.println(alimento.getNombre());
-            System.out.println(alimento.getCalorias());
-            System.out.println(alimento.getCarbohidratos());
-            System.out.println(alimento.getGrasas());
-            System.out.println(alimento.getProteinas());
-            System.out.println(alimento.getImagen());
-            System.out.println(alimento.getTamanoRacion());
-            System.out.println(alimento.isEstado());
-            System.out.println(alimento.getMarca());
-            System.out.println(alimento.getIdUnidadMedida());
-            System.out.println(alimento.getId());
-        }
     }
 
     public static void main(String[] args) {
