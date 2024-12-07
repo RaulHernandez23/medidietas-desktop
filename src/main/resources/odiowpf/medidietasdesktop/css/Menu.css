@@ -1,94 +1,41 @@
 @import "Colores.css";
 
-.rootPane {
-    -fx-background-color: white;
-    -fx-background-radius: 10;
-    -fx-border-color: #ebebeb;
-    -fx-border-radius: 10;
+.fondo-grid {
+    -fx-background-color: -fx-lavanda;
+    -fx-border-color: -fx-lavanda;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 20px;
 }
 
-/**************************************************
- * Window Header
-**************************************************/
-.rootPane .close-icon {
-    -mfx-color: -mfx-red;
-    -fx-opacity: 0.5;
+.fondoPrincipal-grid {
+    -fx-background-color: -fx-blanco-anti-flash;
+    -fx-border-color: -fx-blanco-anti-flash;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
 }
 
-.rootPane .close-icon:hover {
-    -fx-opacity: 1.0;
+.main-grid {
+    -fx-background-color: -fx-blanco;
+    -fx-border-color: -fx-blanco;
+    -fx-border-width: 1px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 20px;
 }
 
-.rootPane .minimize-icon {
-    -mfx-color: #ffbf37;
-    -fx-opacity: 0.5;
-}
-
-.rootPane .minimize-icon:hover {
-    -fx-opacity: 1.0;
-}
-
-.rootPane .always-on-top-icon {
-    -mfx-color: -mfx-purple;
-    -fx-opacity: 0.5;
-}
-
-.rootPane .always-on-top-icon:hover {
-    -fx-opacity: 1.0;
-}
-
-.rootPane .always-on-top-icon:always-on-top {
-    -fx-opacity: 1.0;
-}
-/**************************************************
- * Sidebar
-**************************************************/
-.rootPane .sidebar {
-    -fx-background-color: -fx-azul;
-    -fx-background-insets: -1 -5 -1 -1;
-    -fx-background-radius: 0 20 20 0;
-}
-
-.rootPane .sidebar .header {
-    -fx-font-family: 'Open Sans ExtraBold';
-    -fx-font-size: 24;
-    -fx-text-fill: white;
-}
-
-.rootPane .sidebar .header .mfx-font-icon {
-    -mfx-color: white;
-}
-
-.rootPane .sidebar .mfx-scroll-pane {
-    -fx-background-color: transparent;
-
-    -track-color: rgba(255, 255, 255, 0.3);
-    -thumb-color: white;
-    -thumb-hover-color: white;
-}
-
-.rootPane .sidebar .menu-label {
-    -fx-font-family: 'Open Sans Bold';
-    -fx-font-size: 14;
-    -fx-text-fill: white;
-}
-
-
-.rootPane .sidebar .navbar .mfx-rectangle-toggle-node:selected .mfx-icon-wrapper .mfx-font-icon {
-    -mfx-color: #1E68CC;
-}
-
-.rootPane .navButton {
-    -fx-background-color: -fx-azul;
-    -fx-text-fill: white;
-    -fx-font-size: 18;
-    -fx-font-family: 'Open Sans SemiBold';
-}
-.rootPane .navButton:hover {
-    -fx-background-color: white;
+.title-medium {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
     -fx-text-fill: -fx-azul;
 }
 
-.rootPane .icon {
-    -fx-fill: white;
+.button-confirmacion {
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: -fx-azul;
 }
