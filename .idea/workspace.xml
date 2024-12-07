@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Alimentos): agregado uso de metodo Http">
+    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Experto): añadido metodo para cerrar sesion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/InicioSesionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/InicioSesionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -207,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733556472092</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="feat(Experto): añadido metodo para cerrar sesion">
+      <option name="closed" value="true" />
+      <created>1733605865552</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733605865552</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +249,7 @@
     <MESSAGE value="feat(Menu): comenzada la ventana del menu" />
     <MESSAGE value="feat(Menu): agregados botones al Menu" />
     <MESSAGE value="feat(Alimentos): agregado uso de metodo Http" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(Alimentos): agregado uso de metodo Http" />
+    <MESSAGE value="feat(Experto): añadido metodo para cerrar sesion" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Experto): añadido metodo para cerrar sesion" />
   </component>
 </project>
