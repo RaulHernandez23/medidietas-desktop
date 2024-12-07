@@ -4,14 +4,11 @@ import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 import odiowpf.medidietasdesktop.utilidades.GestorToken;
 import org.json.JSONObject;
-import org.w3c.dom.ls.LSOutput;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 public class ExpertoNutricionDAO {
@@ -63,6 +60,34 @@ public class ExpertoNutricionDAO {
             respuesta.put(Constantes.KEY_MENSAJE, mensaje);
             respuesta.put(Constantes.KEY_ERROR, false);
             respuesta.put(Constantes.KEY_OBJETO, experto);
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
+
+        return respuesta;
+    }
+
+    public static HashMap<String, Object> logOut() {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        String apiUrl = Constantes.URL_BASE + RUTA + "logout";
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+
+            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
+            String mensaje = respuestaJson.getString("msg");
+
+            respuesta.put(Constantes.KEY_MENSAJE, mensaje);
+            respuesta.put(Constantes.KEY_ERROR, false);
+
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
         }
