@@ -36,10 +36,11 @@ public class InicioSesionController {
 //
 //            Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
 //            stageActual.close();
-            HashMap<String, Object> respuesta = ExpertoNutricionDAO.logIn("lgomez@ejemplo.com", "contrasena123");
+            HashMap<String, Object> respuesta = ExpertoNutricionDAO.logOut();
 
-            if ((boolean) respuesta.get(Constantes.KEY_ERROR)) {
-                ExpertoNutricion experto = (ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO);
+            if (!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
+                String mensaje = (String) respuesta.get(Constantes.KEY_MENSAJE);
+                System.out.println(mensaje);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
