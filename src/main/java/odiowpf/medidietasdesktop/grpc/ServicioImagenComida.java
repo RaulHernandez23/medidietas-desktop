@@ -54,11 +54,8 @@ public class ServicioImagenComida {
                     .setExtension(extension)
                     .setImageData(Base64.getEncoder().encodeToString(datosImagen))
                     .build();
-
             ImageService.UploadFileResponse respuestaServicio = stub.uploadFoodImage(solicitud);
-
             if (respuestaServicio.getResult()) {
-                System.out.println(respuestaServicio.getImageName());
                 respuesta = respuestaServicio.getImageName();
             } else {
                 System.out.println("No se ha podido subir la imagen");
