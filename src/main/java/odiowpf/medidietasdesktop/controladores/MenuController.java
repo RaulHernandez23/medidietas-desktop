@@ -60,11 +60,16 @@ public class MenuController
 
     @javafx.fxml.FXML
     public void actionAlimentos(ActionEvent actionEvent) {
+        resetButtonsStyle();
+        btnAlimentos.setStyle("-fx-background-color: -fx-azul; -fx-text-fill: -fx-blanco;");
+
         cargarVista("FXMLAlimentos.fxml");
     }
 
     @javafx.fxml.FXML
     public void actionComidas(ActionEvent actionEvent) {
+        resetButtonsStyle();
+        btnComidas.setStyle("-fx-background-color: -fx-azul; -fx-text-fill: -fx-blanco;");
     }
 
     private void cargarVista(String nombreFxml) {
@@ -77,5 +82,11 @@ public class MenuController
         } catch (IOException ioEx) {
             ioEx.printStackTrace();
         }
+    }
+
+    private void resetButtonsStyle() {
+        String defaultStyle = "-fx-background-color: -fx-blanco; -fx-text-fill: -fx-azul;";
+        btnAlimentos.setStyle(defaultStyle);
+        btnComidas.setStyle(defaultStyle);
     }
 }
