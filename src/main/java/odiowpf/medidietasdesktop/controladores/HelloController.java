@@ -1,5 +1,7 @@
 package odiowpf.medidietasdesktop.controladores;
 
+import io.github.palexdev.materialfx.controls.MFXTableColumn;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -20,6 +22,7 @@ public class HelloController {
     private Label welcomeText;
     @FXML
     private ImageView iv;
+
 
     @FXML
     protected void onHelloButtonClick() {

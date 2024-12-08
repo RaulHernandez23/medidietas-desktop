@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -40,6 +41,8 @@ public class MenuController
     private ImageView ivFotoPerfil;
     @FXML
     private BorderPane bpFotoPerfil;
+    @FXML
+    private Label lbTituloVentana;
 
     @javafx.fxml.FXML
     public void initialize() {
@@ -68,6 +71,7 @@ public class MenuController
 
     @javafx.fxml.FXML
     public void actionAlimentos(ActionEvent actionEvent) {
+        lbTituloVentana.setText("Alimentos");
         resetButtonsStyle();
         btnAlimentos.setStyle("-fx-background-color: -fx-azul; -fx-text-fill: -fx-blanco;");
 
@@ -76,6 +80,7 @@ public class MenuController
 
     @javafx.fxml.FXML
     public void actionComidas(ActionEvent actionEvent) {
+        lbTituloVentana.setText("Comidas");
         resetButtonsStyle();
         btnComidas.setStyle("-fx-background-color: -fx-azul; -fx-text-fill: -fx-blanco;");
     }

@@ -89,13 +89,13 @@
                   </VBox>
                   <StackPane fx:id="paneContenido" layoutX="254.0" layoutY="69.0" prefHeight="520.0" prefWidth="960.0" />
                   <GridPane layoutX="893.0" layoutY="19.0" prefHeight="58.0" prefWidth="382.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.73321533203125" minWidth="10.0" prefWidth="57.39998779296875" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.7333618164063" minWidth="10.0" prefWidth="323.8000122070313" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.73321533203125" minWidth="10.0" prefWidth="57.39998779296875" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="354.7333618164063" minWidth="10.0" prefWidth="323.8000122070313" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <Label styleClass="username" text="Miguel Ángel Morales Cruz" GridPane.columnIndex="1">
                            <GridPane.margin>
@@ -113,6 +113,7 @@
                         </BorderPane>
                      </children>
                   </GridPane>
+                  <Label fx:id="lbTituloVentana" layoutX="265.0" layoutY="26.0" styleClass="title-medium" text="Alimentos" />
                </children>
                <GridPane.margin>
                   <Insets bottom="10.0" />

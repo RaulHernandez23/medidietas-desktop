@@ -33,6 +33,12 @@
     -fx-text-fill: -fx-azul;
 }
 
+.subtitle {
+    -fx-font-size: 20px;
+    -fx-font-weight: semi-bold;
+    -fx-text-fill: -fx-negro;
+}
+
 .username {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
@@ -60,42 +66,43 @@
     -fx-text-fill: -fx-blanco; /* Cambia el texto a blanco */
 }
 
-.tabla{
-    -fx-background-color: -fx-blanco-anti-flash;
-    -fx-border-color: -fx-azul;
-    -fx-border-width: 1px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-padding: 10px;
-}
-
-/* Estilo para las celdas de la tabla */
-.tabla .cell {
-    -fx-font-size: 14px;
-    -fx-text-fill: -fx-blanco;
-    -fx-border-width: 0 0 1px 0;
-    -fx-border-color: transparent transparent -fx-lavanda transparent;
-}
-
-/* Estilo para las filas de la tabla al pasar el ratón */
-.tabla .row:hover {
-    -fx-background-color: -fx-lavanda;
-}
-
-/* Estilo para las filas seleccionadas */
-.tabla .row:selected {
-    -fx-background-color: -fx-azul;
-    -fx-text-fill: -fx-blanco;
-}
-
-/* Encabezado de la tabla */
-.tabla .column-header {
-    -fx-background-color: -fx-azul;
-    -fx-text-fill: -fx-blanco;
+.button-registro {
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-border-width: 0 0 2px 0;
-    -fx-border-color: transparent transparent -fx-blanco transparent;
+    -fx-font-size: 15px;
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: -fx-azul;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-color: -fx-azul;
+}
+
+.button-registro:hover {
+    -fx-background-color: -fx-azul; /* Cambia el fondo a azul cuando el mouse está encima */
+    -fx-text-fill: -fx-blanco; /* Cambia el texto a blanco */
+}
+
+.tabla {
+    -fx-background-color: -fx-blanco; /* Fondo blanco como la mayoría de tus componentes */
+    -fx-border-color: -fx-azul; /* Borde de color lavanda para un estilo más suave */
+    -fx-border-width: 2px; /* Un borde ligeramente más ancho para resaltar */
+    -fx-border-radius: 10px; /* Esquinas redondeadas para consistencia */
+    -fx-background-radius: 10px; /* Coincidir el fondo con el borde */
+    -fx-padding: 10px; /* Espaciado interno */
+    -fx-font-size: 14px; /* Ajuste del tamaño de la fuente dentro de la tabla */
+    -fx-text-fill: -fx-negro; /* Color del texto */
+}
+
+.tabla .column-header {
+    -fx-background-color: -fx-blanco; /* Fondo lavanda para los encabezados de columna */
+    -fx-text-fill: -fx-azul; /* Texto del encabezado azul para destacar */
+    -fx-font-weight: bold; /* Texto en negrita */
+    -fx-alignment: CENTER; /* Centrar texto del encabezado */
+}
+
+.tabla .cell:hover {
+    -fx-background-color: -fx-azul; /* Un azul más intenso al pasar el mouse para destacar */
+    -fx-text-fill: -fx-blanco; /* Texto blanco para asegurar legibilidad */
 }
 
 .profile-container {
@@ -104,4 +111,25 @@
     -fx-border-width: 3px; /* Grosor del borde */
     -fx-background-radius: 50%; /* Redondear el contenedor */
     -fx-border-radius: 100%; /* Redondear el borde */
+}
+
+.text-field-busqueda {
+    -fx-font-size: 12px;
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: -fx-azul;
+    -fx-border-width: 2px; /* Grosor del borde */
+    -fx-border-color: -fx-azul; /* Color azul para el borde */
+    -fx-border-radius: 10px; /* Radios para esquinas redondeadas */
+    -fx-background-radius: 10px;
+}
+
+.text-field-busqueda:focused {
+    -fx-border-color: -fx-lavanda; /* Cambia el color del borde cuando el campo está enfocado */
+    -fx-border-width: 3px; /* Grosor del borde cuando está enfocado */
+}
+
+.subtitle-busqueda {
+    -fx-font-size: 12px; /* Tamaño de fuente ajustado para el subtítulo */
+    -fx-font-weight: bold; /* Seminegrita para destacar un poco más */
+    -fx-text-fill: -fx-azul;
 }
