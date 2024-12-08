@@ -35,10 +35,9 @@ public class InicioSesionController {
             stageActual.close();
             HashMap<String, Object> respuesta = ExpertoNutricionDAO.logIn("lgomez@ejemplo.com", "contrasena123");
 
-            if ((boolean) respuesta.get(Constantes.KEY_ERROR)) {
-                ExpertoNutricion experto = (ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO);
-                System.out.println(experto.getNombre());
-            }
+            ExpertoNutricion experto = (ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO);
+            System.out.println(experto.getNombre());
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
