@@ -33,6 +33,12 @@
     -fx-text-fill: -fx-azul;
 }
 
+.username {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -fx-azul;
+}
+
 .button-confirmacion {
     -fx-font-weight: bold;
     -fx-font-size: 18px;
@@ -52,4 +58,50 @@
 .button-confirmacion:pressed {
     -fx-background-color: -fx-azul; /* Cambia el fondo a azul al ser clicado */
     -fx-text-fill: -fx-blanco; /* Cambia el texto a blanco */
+}
+
+.tabla{
+    -fx-background-color: -fx-blanco-anti-flash;
+    -fx-border-color: -fx-azul;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+}
+
+/* Estilo para las celdas de la tabla */
+.tabla .cell {
+    -fx-font-size: 14px;
+    -fx-text-fill: -fx-blanco;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: transparent transparent -fx-lavanda transparent;
+}
+
+/* Estilo para las filas de la tabla al pasar el ratón */
+.tabla .row:hover {
+    -fx-background-color: -fx-lavanda;
+}
+
+/* Estilo para las filas seleccionadas */
+.tabla .row:selected {
+    -fx-background-color: -fx-azul;
+    -fx-text-fill: -fx-blanco;
+}
+
+/* Encabezado de la tabla */
+.tabla .column-header {
+    -fx-background-color: -fx-azul;
+    -fx-text-fill: -fx-blanco;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-border-width: 0 0 2px 0;
+    -fx-border-color: transparent transparent -fx-blanco transparent;
+}
+
+.profile-container {
+    -fx-background-color: -fx-blanco; /* Fondo azul */
+    -fx-border-color: -fx-azul; /* Borde blanco opcional */
+    -fx-border-width: 3px; /* Grosor del borde */
+    -fx-background-radius: 50%; /* Redondear el contenedor */
+    -fx-border-radius: 100%; /* Redondear el borde */
 }
