@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Registrar alimento): implementado metodo que registra alimentos">
+      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/UnidadMedida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" afterDir="false" />

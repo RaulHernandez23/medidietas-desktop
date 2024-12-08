@@ -3,6 +3,8 @@ package odiowpf.medidietasdesktop.daos;
 import javafx.scene.image.Image;
 import odiowpf.medidietasdesktop.grpc.ServicioImagenComida;
 import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.modelos.Categoria;
+import odiowpf.medidietasdesktop.modelos.UnidadMedida;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 import odiowpf.medidietasdesktop.utilidades.GestorToken;
 import org.json.JSONArray;
@@ -19,6 +21,70 @@ import java.util.List;
 public class AlimentoDAO {
 
     private static final String RUTA = "alimentos/";
+
+    public static HashMap<String, Object> obtenerUnidadesMedida() {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        String apiUrl = Constantes.URL_BASE + RUTA + "unidades-medida";
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONArray unidadesMedidaJson = new JSONArray(cuerpoRespuesta);
+            ArrayList<UnidadMedida> unidadesMedida = new ArrayList<UnidadMedida>();
+
+            for (int i = 0; i < unidadesMedidaJson.length(); i++) {
+                UnidadMedida unidadMedida = new UnidadMedida(
+                        unidadesMedidaJson.getJSONObject(i).getInt("id"),
+                        unidadesMedidaJson.getJSONObject(i).getString("nombre")
+                );
+                unidadesMedida.add(unidadMedida);
+            }
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_OBJETO, unidadesMedida);
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
+        return respuesta;
+    }
+
+    public static HashMap<String, Object> obtenerCategorias() {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        String apiUrl = Constantes.URL_BASE + RUTA + "categorias";
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONArray categoriasJson = new JSONArray(cuerpoRespuesta);
+            ArrayList<Categoria> categorias = new ArrayList<Categoria>();
+
+            for (int i = 0; i < categoriasJson.length(); i++) {
+                Categoria categoria = new Categoria(
+                        categoriasJson.getJSONObject(i).getInt("id"),
+                        categoriasJson.getJSONObject(i).getString("nombre")
+                );
+                categorias.add(categoria);
+            }
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_OBJETO, categorias);
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
+        return respuesta;
+    }
 
     public static HashMap<String, Object> obtenerAlimentos() {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
