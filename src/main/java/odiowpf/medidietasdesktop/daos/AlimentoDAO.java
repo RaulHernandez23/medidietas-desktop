@@ -4,6 +4,7 @@ import odiowpf.medidietasdesktop.modelos.Alimento;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 import odiowpf.medidietasdesktop.utilidades.GestorToken;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -23,7 +24,9 @@ public class AlimentoDAO {
 
         String apiUrl = Constantes.URL_BASE + RUTA;
         HttpClient cliente = HttpClient.newHttpClient();
-        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl)).header("x-token", GestorToken.TOKEN).build();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .build();
 
         try{
             HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
@@ -52,6 +55,67 @@ public class AlimentoDAO {
             respuesta.put(Constantes.KEY_ERROR, false);
             respuesta.put(Constantes.KEY_OBJETO, alimentos);
         } catch (Exception ex){
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
+        return respuesta;
+    }
+
+    public static HashMap<String, Object> obtenerAlimentoPorId(int id) {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject alimentoJson = new JSONObject(cuerpoRespuesta);
+
+            Alimento alimento = new Alimento(
+                    alimentoJson.getInt("id"),
+                    alimentoJson.getString("nombre"),
+                    alimentoJson.getInt("calorias"),
+                    alimentoJson.getDouble("carbohidratos"),
+                    alimentoJson.getDouble("grasas"),
+                    alimentoJson.getDouble("proteinas"),
+                    alimentoJson.getString("imagen"),
+                    alimentoJson.getDouble("tamano_racion"),
+                    alimentoJson.getBoolean("estado"),
+                    alimentoJson.getString("marca"),
+                    alimentoJson.getInt("id_categoria"),
+                    alimentoJson.getInt("id_unidad_medida")
+            );
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_OBJETO, alimento);
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
+        return respuesta;
+    }
+
+    public static HashMap<String, Object> eliminarAlimento(int id) {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .DELETE()
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+        } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
         }
         return respuesta;
