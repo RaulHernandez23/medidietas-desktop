@@ -12,6 +12,7 @@ public class Constantes {
     // Constantes para la conexión con la API
     public static final String PUERTO = "8086";
     public static final String URL_BASE = "http://localhost:" + PUERTO + "/api/medidietas/";
+    public static final String URL_GRPC = "localhost:8087";
 
     // Formatos
     public static final SimpleDateFormat FORMATO_FECHA = new SimpleDateFormat("yyyy-MM-dd");

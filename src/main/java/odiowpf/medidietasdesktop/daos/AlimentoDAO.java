@@ -115,13 +115,10 @@ public class AlimentoDAO {
 
             respuesta.put(Constantes.KEY_ERROR, false);
             respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
-            System.out.println("Mensaje: " + respuestaJson.getString("mensaje"));
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
-            System.out.println("Error: " + ex.getMessage());
         }
         return respuesta;
-
     }
 
 }

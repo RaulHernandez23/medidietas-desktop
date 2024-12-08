@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import odiowpf.medidietasdesktop.daos.AlimentoDAO;
 import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
+import odiowpf.medidietasdesktop.modelos.Alimento;
 import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 
@@ -37,7 +38,7 @@ public class InicioSesionController {
 //
 //            Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
 //            stageActual.close();
-            HashMap<String, Object> respuesta = AlimentoDAO.obtenerAlimentoPorId(1);
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
