@@ -35,15 +35,13 @@ public class HelloController {
 
     @FXML
     public void botonPrueba(ActionEvent actionEvent) {
-        HashMap<String, Object> respuesta = ComidaDAO.obtenerComidaPorId(1);
-        Comida comida = (Comida) respuesta.get(Constantes.KEY_OBJETO);
-        System.out.println(comida.getNombre());
-        System.out.println(comida.getPreparacionVideo());
-        System.out.println(comida.getReceta());
-        System.out.println(comida.getEstado());
-        HashMap<String, Double> alimentos = comida.getAlimentos();
-        for (String key : alimentos.keySet()) {
-            System.out.println(key + " -> " + alimentos.get(key));
-        }
+        Comida comida = new Comida(1, "nombre", "preparacion_video", "receta", true);
+        HashMap<String, Double> alimentos = new HashMap<>();
+        alimentos.put("Manzana", 5.0);
+        alimentos.put("Pera", 3.0);
+        comida.setAlimentos(alimentos);
+        HashMap<String, Object> respuesta = ComidaDAO.registrarComida(comida);
+        String mensaje = (String) respuesta.get(Constantes.KEY_MENSAJE);
+        System.out.println(mensaje);
     }
 }

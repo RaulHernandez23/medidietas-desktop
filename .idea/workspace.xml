@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Comida): agregados metodos Eliminar y Obtener comidas">
+    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Comida): agregados metodo para recuperar 1 comida">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ComidaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ComidaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Comida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Comida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +174,7 @@
       <workItem from="1733509988881" duration="4640000" />
       <workItem from="1733532309278" duration="19398000" />
       <workItem from="1733584299368" duration="7434000" />
-      <workItem from="1733684117152" duration="2013000" />
+      <workItem from="1733684117152" duration="2800000" />
     </task>
     <task id="LOCAL-00001" summary="fix(Run): agregado archivo de inicio para correr con gradlew">
       <option name="closed" value="true" />
@@ -257,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733640495313</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat(Comida): agregados metodo para recuperar 1 comida">
+      <option name="closed" value="true" />
+      <created>1733686553397</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733686553397</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +304,7 @@
     <MESSAGE value="feat(Registrar alimento): implementado metodo que registra alimentos" />
     <MESSAGE value="feat(Alimento): agregadas consultas de categorias y unidades de medida" />
     <MESSAGE value="feat(Comida): agregados metodos Eliminar y Obtener comidas" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(Comida): agregados metodos Eliminar y Obtener comidas" />
+    <MESSAGE value="feat(Comida): agregados metodo para recuperar 1 comida" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Comida): agregados metodo para recuperar 1 comida" />
   </component>
 </project>

@@ -96,10 +96,44 @@ public class ComidaDAO {
         return respuesta;
     }
 
-    public static HashMap<String, Object> registrarComida() {
+    public static HashMap<String, Object> registrarComida(Comida comida) {
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
+        // Se crea manualmente ya que si se mapean los atributos son transformados de snake_case a camelCase
+        try {
+            JSONObject comidaJson = new JSONObject();
+            comidaJson.put("nombre", comida.getNombre());
+            comidaJson.put("preparacion_video", comida.getPreparacionVideo());
+            comidaJson.put("receta", comida.getReceta());
+            comidaJson.put("estado", comida.getEstado());
+            JSONArray alimentosJson = new JSONArray();
+            for(String key : comida.getAlimentos().keySet()){
+                JSONObject alimentoJson = new JSONObject();
+                alimentoJson.put("nombre", key);
+                alimentoJson.put("cantidad", comida.getAlimentos().get(key));
+                alimentosJson.put(alimentoJson);
+            }
+            comidaJson.put("alimentos", alimentosJson);
+
+            String apiUrl = Constantes.URL_BASE + RUTA;
+            HttpClient cliente = HttpClient.newHttpClient();
+            HttpRequest solicitudHttp = HttpRequest.newBuilder()
+                    .uri(URI.create(apiUrl))
+                    .header("Content-Type", "application/json")
+                    .header("x-token", GestorToken.TOKEN)
+                    .POST(HttpRequest.BodyPublishers.ofString(comidaJson.toString()))
+                    .build();
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+        }
+        catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
         return respuesta;
     }
 
