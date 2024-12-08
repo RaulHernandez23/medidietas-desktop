@@ -59,6 +59,40 @@ public class ComidaDAO {
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
+        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder()
+                .uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject comidaJson = new JSONObject(cuerpoRespuesta);
+
+            Comida comida = new Comida(
+                    comidaJson.getInt("id"),
+                    comidaJson.getString("nombre"),
+                    comidaJson.getString("preparacion_video"),
+                    comidaJson.getString("receta"),
+                    comidaJson.getBoolean("estado")
+            );
+
+            JSONArray alimentosJson = comidaJson.getJSONArray("alimentos");
+            HashMap<String, Double> alimentos = new HashMap<>();
+            for(int i = 0; i < alimentosJson.length(); i++){
+                JSONObject alimentoJson = alimentosJson.getJSONObject(i);
+                alimentos.put(alimentoJson.getString("nombre"), alimentoJson.getDouble("cantidad"));
+            }
+            comida.setAlimentos(alimentos);
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_OBJETO, comida);
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
         return respuesta;
     }
 
