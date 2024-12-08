@@ -30,6 +30,21 @@ public class HelloController {
 
     @FXML
     public void botonPrueba(ActionEvent actionEvent) {
+
+        Alimento alimentoPrueba = new Alimento(
+                0,
+                "Pera",
+                100,
+                5.0,
+                3.0,
+                2.0,
+                "leche.jpg",
+                200.0,
+                true,
+                "Lala",
+                1,
+                1
+        );
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Selecciona una imagen");
 
@@ -45,13 +60,15 @@ public class HelloController {
 
                 String nombreImagen = archivoSeleccionado.getName();
                 String extension = nombreImagen.substring(nombreImagen.lastIndexOf(".") + 1);
-
-                String respuesta = ServicioImagenComida.subirImagenComida("Leche", extension, datosImagen);
-
-                System.out.println(respuesta);
+                HashMap<String, Object> respuesta = AlimentoDAO.registrarAlimento(alimentoPrueba, extension, datosImagen);
+                String respuestaMensaje = (String) respuesta.get(Constantes.KEY_MENSAJE);
+                System.out.println(respuestaMensaje);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
         }
+
+
+
     }
 }

@@ -1,5 +1,7 @@
 package odiowpf.medidietasdesktop.daos;
 
+import javafx.scene.image.Image;
+import odiowpf.medidietasdesktop.grpc.ServicioImagenComida;
 import odiowpf.medidietasdesktop.modelos.Alimento;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 import odiowpf.medidietasdesktop.utilidades.GestorToken;
@@ -89,8 +91,11 @@ public class AlimentoDAO {
                     alimentoJson.getInt("id_categoria"),
                     alimentoJson.getInt("id_unidad_medida")
             );
+            Image imagenComida = ServicioImagenComida.descargarImagenComida(alimento.getImagen());
             respuesta.put(Constantes.KEY_ERROR, false);
             respuesta.put(Constantes.KEY_OBJETO, alimento);
+            respuesta.put(Constantes.KEY_IMAGEN, imagenComida);
+
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
         }
@@ -121,4 +126,44 @@ public class AlimentoDAO {
         return respuesta;
     }
 
+    public static HashMap<String, Object> registrarAlimento(Alimento alimento, String extension, byte[] datosImagen) {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        try {
+            String fotoGuardada = ServicioImagenComida.subirImagenComida(alimento.getNombre(), extension, datosImagen);
+            alimento.setImagen(fotoGuardada);
+
+            // Se crea manualmente ya que si se mapean los atributos son transformados de snake_case a camelCase
+            JSONObject alimentoJson = new JSONObject();
+            alimentoJson.put("nombre", alimento.getNombre());
+            alimentoJson.put("calorias", alimento.getCalorias());
+            alimentoJson.put("carbohidratos", alimento.getCarbohidratos());
+            alimentoJson.put("grasas", alimento.getGrasas());
+            alimentoJson.put("imagen", alimento.getImagen());
+            alimentoJson.put("proteinas", alimento.getProteinas());
+            alimentoJson.put("tamano_racion", alimento.getTamanoRacion());
+            alimentoJson.put("marca", alimento.getMarca());
+            alimentoJson.put("id_categoria", alimento.getIdCategoria());
+            alimentoJson.put("id_unidad_medida", alimento.getIdUnidadMedida());
+
+            String apiUrl = Constantes.URL_BASE + RUTA;
+            HttpClient cliente = HttpClient.newHttpClient();
+            HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                    .header("x-token", GestorToken.TOKEN)
+                    .header("Content-Type", "application/json")
+                    .POST(HttpRequest.BodyPublishers.ofString(alimentoJson.toString()))
+                    .build();
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+            // TO DO Implementar eliminacion de la imagen si falla el registro
+        }
+        return respuesta;
+    }
 }
