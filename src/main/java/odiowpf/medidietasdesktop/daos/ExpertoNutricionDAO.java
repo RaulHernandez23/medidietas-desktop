@@ -57,6 +57,7 @@ public class ExpertoNutricionDAO {
             respuesta.put(Constantes.KEY_OBJETO, experto);
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+            System.out.println(ex.getMessage());
         }
 
         return respuesta;
