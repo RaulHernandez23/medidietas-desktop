@@ -166,4 +166,45 @@ public class AlimentoDAO {
         }
         return respuesta;
     }
+
+    public static HashMap<String, Object> editarAlimento(Alimento alimento, String extension, byte[] datosImagen) {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        try{
+            // TO DO Implementar servicio de eliminacion de imagen
+            if(extension != null) {
+                String nuevaFoto = ServicioImagenComida.subirImagenComida(alimento.getNombre(), extension, datosImagen);
+                alimento.setImagen(nuevaFoto);
+            }
+            JSONObject alimentoJson = new JSONObject();
+            alimentoJson.put("nombre", alimento.getNombre());
+            alimentoJson.put("calorias", alimento.getCalorias());
+            alimentoJson.put("carbohidratos", alimento.getCarbohidratos());
+            alimentoJson.put("grasas", alimento.getGrasas());
+            alimentoJson.put("imagen", alimento.getImagen());
+            alimentoJson.put("proteinas", alimento.getProteinas());
+            alimentoJson.put("tamano_racion", alimento.getTamanoRacion());
+            alimentoJson.put("marca", alimento.getMarca());
+            alimentoJson.put("id_categoria", alimento.getIdCategoria());
+            alimentoJson.put("id_unidad_medida", alimento.getIdUnidadMedida());
+
+            String apiUrl = Constantes.URL_BASE + RUTA + alimento.getId();
+            HttpClient cliente = HttpClient.newHttpClient();
+            HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                    .header("x-token", GestorToken.TOKEN)
+                    .header("Content-Type", "application/json")
+                    .PUT(HttpRequest.BodyPublishers.ofString(alimentoJson.toString()))
+                    .build();
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+        }
+        return respuesta;
+    }
 }

@@ -32,16 +32,16 @@ public class HelloController {
     public void botonPrueba(ActionEvent actionEvent) {
 
         Alimento alimentoPrueba = new Alimento(
-                0,
+                6,
                 "Pera",
                 100,
                 5.0,
                 3.0,
                 2.0,
-                "leche.jpg",
+                "pera.jpg",
                 200.0,
                 true,
-                "Lala",
+                "San Marcos",
                 1,
                 1
         );
@@ -54,21 +54,16 @@ public class HelloController {
 
         File archivoSeleccionado = fileChooser.showOpenDialog(((Node) actionEvent.getSource()).getScene().getWindow());
 
-        if (archivoSeleccionado != null) {
             try {
                 byte[] datosImagen = Files.readAllBytes(archivoSeleccionado.toPath());
 
                 String nombreImagen = archivoSeleccionado.getName();
-                String extension = nombreImagen.substring(nombreImagen.lastIndexOf(".") + 1);
-                HashMap<String, Object> respuesta = AlimentoDAO.registrarAlimento(alimentoPrueba, extension, datosImagen);
+                String extension = null;
+                HashMap<String, Object> respuesta = AlimentoDAO.editarAlimento(alimentoPrueba, extension, datosImagen);
                 String respuestaMensaje = (String) respuesta.get(Constantes.KEY_MENSAJE);
                 System.out.println(respuestaMensaje);
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
             }
-        }
-
-
-
     }
 }
