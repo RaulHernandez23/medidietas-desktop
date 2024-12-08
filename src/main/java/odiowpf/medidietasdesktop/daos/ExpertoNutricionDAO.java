@@ -34,13 +34,9 @@ public class ExpertoNutricionDAO {
                     .build();
 
             HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
-
             String cuerpoRespuesta = respuestaHttp.body();
-
-            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
-            String mensaje = respuestaJson.getString("msg");
-
-            JSONObject expertoJson = respuestaJson.getJSONObject("experto");
+            JSONObject jsonObject = new JSONObject(cuerpoRespuesta);
+            JSONObject expertoJson = jsonObject.getJSONObject("experto");
 
             ExpertoNutricion experto = new ExpertoNutricion(
                     expertoJson.getInt("id"),
@@ -57,7 +53,6 @@ public class ExpertoNutricionDAO {
 
             GestorToken.TOKEN = respuestaHttp.headers().firstValue("x-token").get();
 
-            respuesta.put(Constantes.KEY_MENSAJE, mensaje);
             respuesta.put(Constantes.KEY_ERROR, false);
             respuesta.put(Constantes.KEY_OBJETO, experto);
         } catch (Exception ex) {

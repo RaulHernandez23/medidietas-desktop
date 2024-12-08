@@ -97,4 +97,31 @@ public class AlimentoDAO {
         return respuesta;
     }
 
+    public static HashMap<String, Object> eliminarAlimento(int id) {
+        HashMap<String, Object> respuesta = new HashMap<String, Object>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+
+        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        HttpClient cliente = HttpClient.newHttpClient();
+        HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
+                .header("x-token", GestorToken.TOKEN)
+                .DELETE()
+                .build();
+
+        try {
+            HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
+            String cuerpoRespuesta = respuestaHttp.body();
+            JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
+
+            respuesta.put(Constantes.KEY_ERROR, false);
+            respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+            System.out.println("Mensaje: " + respuestaJson.getString("mensaje"));
+        } catch (Exception ex) {
+            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return respuesta;
+
+    }
+
 }
