@@ -89,7 +89,7 @@
     -fx-border-radius: 10px; /* Esquinas redondeadas para consistencia */
     -fx-background-radius: 10px; /* Coincidir el fondo con el borde */
     -fx-padding: 10px; /* Espaciado interno */
-    -fx-font-size: 14px; /* Ajuste del tamaño de la fuente dentro de la tabla */
+    -fx-font-size: 18px; /* Ajuste del tamaño de la fuente dentro de la tabla */
     -fx-text-fill: -fx-negro; /* Color del texto */
 }
 

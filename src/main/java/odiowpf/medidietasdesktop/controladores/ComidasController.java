@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import odiowpf.medidietasdesktop.modelos.Alimento;
 
 
-public class AlimentosController {
+public class ComidasController {
     @FXML
     private TableView<Alimento> tablaAlimentos;
 

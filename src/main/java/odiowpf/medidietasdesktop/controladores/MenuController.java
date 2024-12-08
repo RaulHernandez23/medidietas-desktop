@@ -47,6 +47,7 @@ public class MenuController
     @javafx.fxml.FXML
     public void initialize() {
         configurarFotoPerfil();
+        inicializarComponentesVisuales();
     }
 
     @javafx.fxml.FXML
@@ -83,6 +84,8 @@ public class MenuController
         lbTituloVentana.setText("Comidas");
         resetButtonsStyle();
         btnComidas.setStyle("-fx-background-color: -fx-azul; -fx-text-fill: -fx-blanco;");
+
+        cargarVista("FXMLComidas.fxml");
     }
 
     private void cargarVista(String nombreFxml) {
@@ -155,6 +158,10 @@ public class MenuController
         SnapshotParameters params = new SnapshotParameters();
         params.setFill(Color.TRANSPARENT); // Mantener la transparencia
         return canvas.snapshot(params, writableImage);
+    }
+
+    private void inicializarComponentesVisuales() {
+        lbTituloVentana.setText("");
     }
 
 }
