@@ -35,12 +35,15 @@ public class HelloController {
 
     @FXML
     public void botonPrueba(ActionEvent actionEvent) {
-        Comida comida = new Comida(1, "nombre", "preparacion_video", "receta", true);
+        Comida comida = new Comida(3, "nombre",
+                "https://www.youtube.com/watch?v=lA54Fs79Gtc&pp=ygUTZW5zYWxhZGEgZGUgbWFuemFuYQ%3D%3D",
+                "Prepararla",
+                true);
         HashMap<String, Double> alimentos = new HashMap<>();
         alimentos.put("Manzana", 5.0);
-        alimentos.put("Pera", 3.0);
+        alimentos.put("Pera", 5.0);
         comida.setAlimentos(alimentos);
-        HashMap<String, Object> respuesta = ComidaDAO.registrarComida(comida);
+        HashMap<String, Object> respuesta = ComidaDAO.editarComida(comida);
         String mensaje = (String) respuesta.get(Constantes.KEY_MENSAJE);
         System.out.println(mensaje);
     }
