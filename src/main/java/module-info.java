@@ -12,6 +12,8 @@ module odiowpf.medidietasdesktop {
     requires MaterialFX;
     requires java.net.http;
     requires org.json;
+    requires javafx.web;
+    requires javafx.media;
 
     exports odiowpf.medidietasdesktop.controladores;
 
@@ -22,4 +24,5 @@ module odiowpf.medidietasdesktop {
     opens odiowpf.medidietasdesktop to javafx.fxml;
     exports odiowpf.medidietasdesktop;
     exports odiowpf.medidietasdesktop.modelos;
+
 }
