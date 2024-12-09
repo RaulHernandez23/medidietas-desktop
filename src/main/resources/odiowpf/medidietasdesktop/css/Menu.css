@@ -187,7 +187,7 @@
 }
 
 .text-field-grasas {
-    -fx-border-color: #FFFF00; /* Amarillo */
+    -fx-border-color: #FFD700; /* Amarillo */
     -fx-text-fill: black; /* Texto en negro para buena legibilidad */
 }
 
@@ -200,4 +200,3 @@
     -fx-border-color: #32CD32; /* Verde lima */
     -fx-text-fill: black; /* Texto en negro para buena legibilidad */
 }
-

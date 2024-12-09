@@ -258,7 +258,7 @@
                                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                    </rowConstraints>
                                                    <children>
-                                                      <Label style="-fx-text-fill: #FFFF00;" styleClass="subtitle-busqueda" text="Grasas" GridPane.valignment="BOTTOM">
+                                                      <Label style="-fx-text-fill: #FFD700;" styleClass="subtitle-busqueda" text="Grasas" GridPane.valignment="BOTTOM">
                                                          <GridPane.margin>
                                                             <Insets />
                                                          </GridPane.margin>
