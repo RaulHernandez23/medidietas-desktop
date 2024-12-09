@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Comida): agregados metodo para registrar 1 comida">
+    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Iniciar sesion): agregada funcionalidad al inicio de sesion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/InicioSesionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/InicioSesionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/GestorToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLInicioSesion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLInicioSesion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733687318187</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="feat(Iniciar sesion): agregada funcionalidad al inicio de sesion">
+      <option name="closed" value="true" />
+      <created>1733704570492</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733704570492</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +323,7 @@
     <MESSAGE value="feat(Comida): agregados metodos Eliminar y Obtener comidas" />
     <MESSAGE value="feat(Comida): agregados metodo para recuperar 1 comida" />
     <MESSAGE value="feat(Comida): agregados metodo para registrar 1 comida" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(Comida): agregados metodo para registrar 1 comida" />
+    <MESSAGE value="feat(Iniciar sesion): agregada funcionalidad al inicio de sesion" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Iniciar sesion): agregada funcionalidad al inicio de sesion" />
   </component>
 </project>

@@ -97,7 +97,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label styleClass="username" text="Miguel Ángel Morales Cruz" GridPane.columnIndex="1">
+                        <Label fx:id="lblNombreExperto" styleClass="username" text="Miguel Ángel Morales Cruz" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
