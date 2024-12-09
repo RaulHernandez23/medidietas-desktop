@@ -1,18 +1,21 @@
 package odiowpf.medidietasdesktop.controladores;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.daos.ComidaDAO;
 import odiowpf.medidietasdesktop.modelos.Comida;
+import odiowpf.medidietasdesktop.utilidades.Constantes;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ComidasController {
@@ -20,11 +23,15 @@ public class ComidasController {
     private TableView<Comida> tablaComidas;
 
     private ObservableList<Comida> comidas;
+    @FXML
+    private TextField txtBusqueda;
+    @FXML
+    private MFXButton btnRegistrar;
 
     @FXML
     public void initialize() {
         configurarTabla();
-        llenarDatosEjemplo();
+        llenarDatos();
     }
 
     private void configurarTabla() {
@@ -105,11 +112,14 @@ public class ComidasController {
         tablaComidas.getColumns().addAll(columnaComida, columnaReceta, columnaEditar, columnaEliminar);
     }
 
-    private void llenarDatosEjemplo() {
-        comidas = FXCollections.observableArrayList(
-                new Comida(1, "Pasta", "preparacion_video_1", "Receta de pasta", true),
-                new Comida(2, "Ensalada", "preparacion_video_2", "Receta de ensalada", true)
-        );
+    private void llenarDatos() {
+        HashMap<String, Object> respuesta = ComidaDAO.obtenerComidas();
+        ArrayList<Comida> listaComidas = (ArrayList<Comida>) respuesta.get(Constantes.KEY_OBJETO);
+        comidas = FXCollections.observableArrayList(listaComidas);
         tablaComidas.setItems(comidas);
+    }
+
+    @FXML
+    public void actionRegistrar(ActionEvent actionEvent) {
     }
 }

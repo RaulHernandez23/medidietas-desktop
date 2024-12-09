@@ -51,6 +51,8 @@ public class ComidaDAO {
             respuesta.put(Constantes.KEY_OBJETO, comidas);
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+            System.out.println("Error: " + ex.getMessage());
+            ex.printStackTrace();
         }
         return respuesta;
     }

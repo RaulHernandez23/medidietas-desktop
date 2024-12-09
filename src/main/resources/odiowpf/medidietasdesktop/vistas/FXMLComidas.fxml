@@ -55,14 +55,14 @@
                                         <Insets left="10.0" />
                                     </GridPane.margin>
                                 </Label>
-                                <TextField styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                <TextField fx:id="txtBusqueda" styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                     <GridPane.margin>
                                         <Insets left="10.0" right="70.0" />
                                     </GridPane.margin>
                                 </TextField>
                             </children>
                         </GridPane>
-                        <MFXButton prefHeight="31.0" prefWidth="247.0" styleClass="button-registro" text="Registrar nueva comida" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <MFXButton fx:id="btnRegistrar" onAction="#actionRegistrar" prefHeight="31.0" prefWidth="247.0" styleClass="button-registro" text="Registrar nueva comida" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
