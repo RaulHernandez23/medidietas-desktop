@@ -133,3 +133,70 @@
     -fx-font-weight: bold; /* Seminegrita para destacar un poco más */
     -fx-text-fill: -fx-azul;
 }
+
+.text-area-campo {
+    -fx-font-size: 12px;
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: -fx-azul;
+    -fx-border-width: 2px;
+    -fx-border-color: -fx-azul;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+    -fx-control-inner-background: -fx-blanco;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.combo-box-campo {
+    -fx-font-size: 12px;
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: -fx-azul;
+    -fx-border-width: 2px; /* Grosor del borde */
+    -fx-border-color: -fx-azul; /* Color azul para el borde */
+    -fx-border-radius: 10px; /* Radios para esquinas redondeadas */
+    -fx-background-radius: 10px;
+    /* Estilos adicionales para flecha desplegable */
+    -fx-mark-color: -fx-azul;
+}
+
+.button-cancelar {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-color: -fx-blanco;
+    -fx-text-fill: red;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-border-color: red;
+}
+
+.button-cancelar:hover {
+    -fx-background-color: red; /* Cambia el fondo a azul cuando el mouse está encima */
+    -fx-text-fill: -fx-blanco; /* Cambia el texto a blanco */
+}
+
+.label-error {
+    -fx-text-fill: red; /* Color del texto en rojo para indicar error */
+    -fx-font-weight: bold; /* Texto en negrita */
+}
+
+.text-field-calorias {
+    -fx-border-color: #FFA500; /* Naranja */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+
+.text-field-grasas {
+    -fx-border-color: #FFD700; /* Amarillo */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+
+.text-field-carbohidratos {
+    -fx-border-color: #87CEEB; /* Azul cielo */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+
+.text-field-proteinas {
+    -fx-border-color: #32CD32; /* Verde lima */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}

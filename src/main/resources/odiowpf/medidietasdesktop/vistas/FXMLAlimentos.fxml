@@ -62,7 +62,7 @@
                         </TextField>
                      </children>
                   </GridPane>
-                  <MFXButton prefHeight="31.0" prefWidth="247.0" styleClass="button-registro" text="Registrar nuevo alimento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                  <MFXButton onAction="#actionRegistrar" prefHeight="31.0" prefWidth="247.0" styleClass="button-registro" text="Registrar nuevo alimento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
