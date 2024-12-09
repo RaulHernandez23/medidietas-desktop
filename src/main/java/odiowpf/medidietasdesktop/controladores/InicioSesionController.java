@@ -1,12 +1,17 @@
 package odiowpf.medidietasdesktop.controladores;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.Menu;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
 import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
@@ -15,32 +20,63 @@ import odiowpf.medidietasdesktop.utilidades.Constantes;
 import java.util.HashMap;
 
 public class InicioSesionController {
+    private ExpertoNutricion experto;
 
     @FXML
     private AnchorPane paneRaiz;
+    @FXML
+    private PasswordField txtPass;
+    @FXML
+    private TextField txtCorreo;
+    @FXML
+    private MFXButton btnEntrar;
+    @FXML
+    private BorderPane borderMensaje;
+    @FXML
+    private Label lblError;
 
     @FXML
-    public void btnEntrar(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml"));
-            Scene scene = new Scene(loader.load(), 1280, 720);
+    public void initialize() {
+        borderMensaje.setVisible(false);
+        btnEntrar.setDisable(true);
+        txtCorreo.textProperty().addListener((observable, oldValue, newValue) -> validarCampos());
+        txtPass.textProperty().addListener((observable, oldValue, newValue) -> validarCampos());
+    }
 
-            Stage stage = new Stage();
-            stage.setTitle("Menú principal");
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+    @FXML
+    public void actionEntrar(ActionEvent actionEvent) {
+        HashMap<String, Object> respuesta = ExpertoNutricionDAO.logIn(txtCorreo.getText(), txtPass.getText());
 
-            Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
-            stageActual.close();
-            HashMap<String, Object> respuesta = ExpertoNutricionDAO.logIn("lgomez@ejemplo.com", "contrasena123");
+        if(!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml"));
+                Scene scene = new Scene(loader.load(), 1280, 720);
+                MenuController controlador = loader.getController();
+                controlador.cargarDatos((ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO),
+                        (Image) respuesta.get(Constantes.KEY_IMAGEN));
+                Stage stage = new Stage();
+                stage.setTitle("Menú principal");
+                stage.setResizable(false);
+                stage.setScene(scene);
 
-            ExpertoNutricion experto = (ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO);
-            System.out.println(experto.getNombre());
+                stage.show();
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
+                Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
+                stageActual.close();
+
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
+        else {
+            lblError.setText("Usuario y/o contraseña incorrectos. Por favor, verifíquelos");
+            borderMensaje.setVisible(true);
+        }
+    }
 
+    private void validarCampos() {
+        boolean camposLlenos = !txtCorreo.getText().trim().isEmpty() && !txtPass.getText().trim().isEmpty();
+        btnEntrar.setDisable(!camposLlenos);
     }
 }

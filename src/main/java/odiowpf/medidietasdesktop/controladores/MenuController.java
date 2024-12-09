@@ -15,16 +15,19 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
+import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MenuController
 {
 
+    private ExpertoNutricion experto;
+    private Image fotoPerfil;
     @javafx.fxml.FXML
     private AnchorPane paneRaiz;
-    @javafx.fxml.FXML
-    private HBox cabeceraVentana;
     @javafx.fxml.FXML
     private VBox barraNavegacion;
     @javafx.fxml.FXML
@@ -43,15 +46,24 @@ public class MenuController
     private BorderPane bpFotoPerfil;
     @FXML
     private Label lbTituloVentana;
+    @FXML
+    private Label lblNombreExperto;
 
     @javafx.fxml.FXML
     public void initialize() {
+    }
+
+    public void cargarDatos(ExpertoNutricion experto, Image fotoPerfil) {
+        this.experto = experto;
+        this.fotoPerfil = fotoPerfil;
+        configurarLabelNombre();
         configurarFotoPerfil();
         inicializarComponentesVisuales();
     }
 
     @javafx.fxml.FXML
     public void actionSalir(ActionEvent actionEvent) {
+        HashMap<String, Object> respuesta = ExpertoNutricionDAO.logOut();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLInicioSesion.fxml"));
             Scene scene = new Scene(loader.load(), 1280, 720);
@@ -114,7 +126,7 @@ public class MenuController
                         .toExternalForm());
 
         // Crear una imagen cuadrada con relleno
-        Image squareImage = ajustarImagenConRelleno(originalImage, 60);
+        Image squareImage = ajustarImagenConRelleno(fotoPerfil, 60);
 
         // Crear el ImageView con la imagen cuadrada
         ivFotoPerfil = new ImageView(squareImage);
@@ -162,6 +174,13 @@ public class MenuController
 
     private void inicializarComponentesVisuales() {
         lbTituloVentana.setText("");
+    }
+
+    private void configurarLabelNombre() {
+        String nombreCompleto = experto.getNombre()
+                + " " + experto.getApellidoPaterno()
+                + " " + experto.getApellidoMaterno();
+        lblNombreExperto.setText(nombreCompleto);
     }
 
 }

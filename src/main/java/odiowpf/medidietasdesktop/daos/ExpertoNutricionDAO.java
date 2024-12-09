@@ -1,5 +1,7 @@
 package odiowpf.medidietasdesktop.daos;
 
+import javafx.scene.image.Image;
+import odiowpf.medidietasdesktop.grpc.ServicioImagenPerfil;
 import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 import odiowpf.medidietasdesktop.utilidades.GestorToken;
@@ -51,10 +53,13 @@ public class ExpertoNutricionDAO {
                     expertoJson.getString("perfil_profesional")
             );
 
+            Image foto = ServicioImagenPerfil.descargarImagenPerfil(experto.getFoto());
+
             GestorToken.TOKEN = respuestaHttp.headers().firstValue("x-token").get();
 
             respuesta.put(Constantes.KEY_ERROR, false);
             respuesta.put(Constantes.KEY_OBJETO, experto);
+            respuesta.put(Constantes.KEY_IMAGEN, foto);
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
             System.out.println(ex.getMessage());

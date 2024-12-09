@@ -1,56 +1,49 @@
 package odiowpf.medidietasdesktop.controladores;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.daos.ComidaDAO;
+import odiowpf.medidietasdesktop.modelos.Comida;
+import odiowpf.medidietasdesktop.utilidades.Constantes;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class ComidasController {
     @FXML
-    private TableView<Alimento> tablaAlimentos;
+    private TableView<Comida> tablaComidas;
 
-    private ObservableList<Alimento> alimentos;
+    private ObservableList<Comida> comidas;
+    @FXML
+    private TextField txtBusqueda;
+    @FXML
+    private MFXButton btnRegistrar;
 
     @FXML
     public void initialize() {
         configurarTabla();
-        llenarDatosEjemplo();
+        llenarDatos();
     }
 
     private void configurarTabla() {
-        TableColumn<Alimento, String> alimentoColumna = new TableColumn<>("Alimento");
-        alimentoColumna.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        TableColumn<Comida, String> columnaComida = new TableColumn<>("Comida");
+        columnaComida.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 
-        TableColumn<Alimento, Double> racionColumna = new TableColumn<>("Ración");
-        racionColumna.setCellValueFactory(new PropertyValueFactory<>("tamanoRacion"));
-
-        TableColumn<Alimento, Double> caloriasColumna = new TableColumn<>("Calorías");
-        caloriasColumna.setCellValueFactory(new PropertyValueFactory<>("calorias"));
-
-        TableColumn<Alimento, Integer> cantidadColumna = new TableColumn<>("Marca");
-        cantidadColumna.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        TableColumn<Comida, String> columnaReceta = new TableColumn<>("Receta");
+        columnaReceta.setCellValueFactory(new PropertyValueFactory<>("receta"));
 
         // Columna para editar
-        TableColumn<Alimento, Void> editarColumna = new TableColumn<>("Editar");
-        editarColumna.setCellFactory(param -> new TableCell<Alimento, Void>() {
+        TableColumn<Comida, Void> columnaEditar = new TableColumn<>("Editar");
+        columnaEditar.setCellFactory(param -> new TableCell<Comida, Void>() {
             private final Button btnEditar = new Button();
 
             {
@@ -62,8 +55,8 @@ public class ComidasController {
                 btnEditar.setGraphic(imageView);
                 btnEditar.setStyle("-fx-background-color: orange;");
                 btnEditar.setOnAction(event -> {
-                    Alimento alimento = getTableView().getItems().get(getIndex());
-                    System.out.println("Editar: " + alimento.getNombre());
+                    Comida comida = getTableView().getItems().get(getIndex());
+                    System.out.println("Editar: " + comida.getNombre());
                 });
             }
 
@@ -80,8 +73,8 @@ public class ComidasController {
         });
 
         // Columna para eliminar
-        TableColumn<Alimento, Void> eliminarColumna = new TableColumn<>("Eliminar");
-        eliminarColumna.setCellFactory(param -> new TableCell<Alimento, Void>() {
+        TableColumn<Comida, Void> columnaEliminar = new TableColumn<>("Eliminar");
+        columnaEliminar.setCellFactory(param -> new TableCell<Comida, Void>() {
             private final Button btnEliminar = new Button();
 
             {
@@ -93,8 +86,8 @@ public class ComidasController {
                 btnEliminar.setGraphic(imageView);
                 btnEliminar.setStyle("-fx-background-color: red;");
                 btnEliminar.setOnAction(event -> {
-                    Alimento alimento = getTableView().getItems().get(getIndex());
-                    System.out.println("Eliminar: " + alimento.getNombre());
+                    Comida comida = getTableView().getItems().get(getIndex());
+                    System.out.println("Eliminar: " + comida.getNombre());
                 });
             }
 
@@ -111,40 +104,22 @@ public class ComidasController {
         });
 
         // Distribuir el espacio disponible proporcionalmente entre las columnas
-        alimentoColumna.prefWidthProperty().bind(tablaAlimentos.widthProperty().multiply(0.25));
-        racionColumna.prefWidthProperty().bind(tablaAlimentos.widthProperty().multiply(0.20));
-        caloriasColumna.prefWidthProperty().bind(tablaAlimentos.widthProperty().multiply(0.20));
-        cantidadColumna.prefWidthProperty().bind(tablaAlimentos.widthProperty().multiply(0.13));
-        editarColumna.prefWidthProperty().bind(tablaAlimentos.widthProperty().multiply(0.10));
-        eliminarColumna.prefWidthProperty().bind(tablaAlimentos.widthProperty().multiply(0.10));
+        columnaComida.prefWidthProperty().bind(tablaComidas.widthProperty().multiply(0.28));
+        columnaReceta.prefWidthProperty().bind(tablaComidas.widthProperty().multiply(0.50));
+        columnaEditar.prefWidthProperty().bind(tablaComidas.widthProperty().multiply(0.10));
+        columnaEliminar.prefWidthProperty().bind(tablaComidas.widthProperty().multiply(0.10));
 
-        tablaAlimentos.getColumns().addAll(alimentoColumna, racionColumna, caloriasColumna, cantidadColumna, editarColumna, eliminarColumna);
+        tablaComidas.getColumns().addAll(columnaComida, columnaReceta, columnaEditar, columnaEliminar);
     }
 
-    private void llenarDatosEjemplo() {
-        alimentos = FXCollections.observableArrayList(
-                new Alimento(1, "Patata", 200, 17.0, 0.1, 2.0, "path/to/patata.png", 150.0, true, "Marca A", 1, 2),
-                new Alimento(2, "Pollo", 250, 0.0, 14.0, 27.0, "path/to/pollo.png", 200.0, true, "Marca B", 2, 3)
-        );
-        tablaAlimentos.setItems(alimentos);
+    private void llenarDatos() {
+        HashMap<String, Object> respuesta = ComidaDAO.obtenerComidas();
+        ArrayList<Comida> listaComidas = (ArrayList<Comida>) respuesta.get(Constantes.KEY_OBJETO);
+        comidas = FXCollections.observableArrayList(listaComidas);
+        tablaComidas.setItems(comidas);
     }
 
     @FXML
-    void ClickRegistrarComida(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass()
-                    .getResource("/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED);
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Manejo de errores
-        }
+    public void actionRegistrar(ActionEvent actionEvent) {
     }
 }
