@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
-<?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.mfxcore.controls.Label?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +16,7 @@
 
 <AnchorPane fx:id="paneRaiz" prefHeight="720.0" prefWidth="1280.0" styleClass="rootPane" stylesheets="@../css/InicioSesion.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="odiowpf.medidietasdesktop.controladores.InicioSesionController">
    <children>
-      <GridPane alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo-grid">
+      <GridPane alignment="CENTER" layoutX="-14.0" prefHeight="720.0" prefWidth="1280.0" styleClass="fondo-grid">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -59,7 +59,6 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <MFXTextField prefHeight="0.0" prefWidth="448.0" styleClass="text-field" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                               <Label styleClass="subtitle" text="Correo electronico:" GridPane.valignment="BOTTOM">
                                  <font>
                                     <Font size="20.0" />
@@ -68,6 +67,11 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </Label>
+                              <TextField prefHeight="45.0" prefWidth="447.0" styleClass="text-field-campos" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" right="40.0" />
+                                 </GridPane.margin>
+                              </TextField>
                            </children>
                         </GridPane>
                         <Label styleClass="title-large" text="Medidietas" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
@@ -100,7 +104,11 @@
                                     <Insets left="40.0" />
                                  </GridPane.margin>
                               </Label>
-                              <MFXPasswordField prefWidth="444.0" styleClass="text-field" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+                              <PasswordField prefHeight="45.0" styleClass="text-field-campos" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets left="40.0" right="40.0" />
+                                 </GridPane.margin>
+                              </PasswordField>
                            </children>
                         </GridPane>
                         <MFXButton prefHeight="34.0" prefWidth="245.0" styleClass="button-SignUp" text="Registrarse" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
