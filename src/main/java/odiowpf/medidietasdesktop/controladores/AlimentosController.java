@@ -11,7 +11,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import odiowpf.medidietasdesktop.daos.AlimentoDAO;
 import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.utilidades.Constantes;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class AlimentosController {
@@ -23,7 +28,7 @@ public class AlimentosController {
     @FXML
     public void initialize() {
         configurarTabla();
-        llenarDatosEjemplo();
+        llenarDatos();
     }
 
     private void configurarTabla() {
@@ -112,11 +117,10 @@ public class AlimentosController {
         tablaAlimentos.getColumns().addAll(alimentoColumna, racionColumna, caloriasColumna, cantidadColumna, editarColumna, eliminarColumna);
     }
 
-    private void llenarDatosEjemplo() {
-        alimentos = FXCollections.observableArrayList(
-                new Alimento(1, "Patata", 200, 17.0, 0.1, 2.0, "path/to/patata.png", 150.0, true, "Marca A", 1, 2),
-                new Alimento(2, "Pollo", 250, 0.0, 14.0, 27.0, "path/to/pollo.png", 200.0, true, "Marca B", 2, 3)
-        );
+    private void llenarDatos() {
+        HashMap<String, Object> respuesta = AlimentoDAO.obtenerAlimentos();
+        ArrayList<Alimento> listaAlimentos = (ArrayList<Alimento>) respuesta.get(Constantes.KEY_OBJETO);
+        alimentos = FXCollections.observableArrayList(listaAlimentos);
         tablaAlimentos.setItems(alimentos);
     }
 }

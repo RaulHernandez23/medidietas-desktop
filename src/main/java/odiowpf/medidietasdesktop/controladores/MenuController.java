@@ -19,6 +19,7 @@ import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
 import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class MenuController
 {
@@ -62,6 +63,7 @@ public class MenuController
 
     @javafx.fxml.FXML
     public void actionSalir(ActionEvent actionEvent) {
+        HashMap<String, Object> respuesta = ExpertoNutricionDAO.logOut();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLInicioSesion.fxml"));
             Scene scene = new Scene(loader.load(), 1280, 720);
