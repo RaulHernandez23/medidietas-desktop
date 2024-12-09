@@ -2,13 +2,8 @@ package odiowpf.medidietasdesktop.controladores;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -16,14 +11,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import odiowpf.medidietasdesktop.modelos.Alimento;
 
-import java.io.IOException;
-
-
-public class ComidasController {
+public class RegistrarComidaController {
     @FXML
     private TableView<Alimento> tablaAlimentos;
 
@@ -127,24 +117,5 @@ public class ComidasController {
                 new Alimento(2, "Pollo", 250, 0.0, 14.0, 27.0, "path/to/pollo.png", 200.0, true, "Marca B", 2, 3)
         );
         tablaAlimentos.setItems(alimentos);
-    }
-
-    @FXML
-    void ClickRegistrarComida(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass()
-                    .getResource("/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED);
-            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            currentStage.close();
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Manejo de errores
-        }
     }
 }
