@@ -175,3 +175,29 @@
     -fx-background-color: red; /* Cambia el fondo a azul cuando el mouse está encima */
     -fx-text-fill: -fx-blanco; /* Cambia el texto a blanco */
 }
+
+.label-error {
+    -fx-text-fill: red; /* Color del texto en rojo para indicar error */
+    -fx-font-weight: bold; /* Texto en negrita */
+}
+
+.text-field-calorias {
+    -fx-border-color: #FFA500; /* Naranja */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+
+.text-field-grasas {
+    -fx-border-color: #FFFF00; /* Amarillo */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+
+.text-field-carbohidratos {
+    -fx-border-color: #87CEEB; /* Azul cielo */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+
+.text-field-proteinas {
+    -fx-border-color: #32CD32; /* Verde lima */
+    -fx-text-fill: black; /* Texto en negro para buena legibilidad */
+}
+

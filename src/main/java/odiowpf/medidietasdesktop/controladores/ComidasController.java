@@ -14,6 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import odiowpf.medidietasdesktop.daos.ComidaDAO;
@@ -136,12 +137,10 @@ public class ComidasController {
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.UNDECORATED); // Ventana sin borde
-            stage.show();
+            stage.setTitle("Registrar comida");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
 
-            // Para cerrar la ventana actual
-            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
             // Manejo de errores
