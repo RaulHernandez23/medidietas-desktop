@@ -29,7 +29,7 @@
                         <Insets left="10.0" right="10.0" top="10.0" />
                     </GridPane.margin>
                     <center>
-                        <TableView fx:id="tablaAlimentos" prefHeight="200.0" prefWidth="200.0" styleClass="tabla" BorderPane.alignment="CENTER" />
+                        <TableView fx:id="tablaComidas" prefHeight="200.0" prefWidth="200.0" styleClass="tabla" BorderPane.alignment="CENTER" />
                     </center>
                 </BorderPane>
                 <GridPane GridPane.rowIndex="1">
@@ -62,7 +62,7 @@
                                 </TextField>
                             </children>
                         </GridPane>
-                        <MFXButton prefHeight="31.0" prefWidth="247.0" styleClass="button-registro" text="Registrar nuevo alimento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <MFXButton prefHeight="31.0" prefWidth="247.0" styleClass="button-registro" text="Registrar nueva comida" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                             <GridPane.margin>
                                 <Insets />
                             </GridPane.margin>
