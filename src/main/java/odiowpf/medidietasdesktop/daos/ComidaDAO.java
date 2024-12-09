@@ -21,7 +21,7 @@ public class ComidaDAO {
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA;
+        String apiUrl = Constantes.URL_REST + RUTA;
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))
@@ -61,7 +61,7 @@ public class ComidaDAO {
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        String apiUrl = Constantes.URL_REST + RUTA + id;
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))
@@ -118,7 +118,7 @@ public class ComidaDAO {
             }
             comidaJson.put("alimentos", alimentosJson);
 
-            String apiUrl = Constantes.URL_BASE + RUTA;
+            String apiUrl = Constantes.URL_REST + RUTA;
             HttpClient cliente = HttpClient.newHttpClient();
             HttpRequest solicitudHttp = HttpRequest.newBuilder()
                     .uri(URI.create(apiUrl))
@@ -158,7 +158,7 @@ public class ComidaDAO {
             }
             comidaJson.put("alimentos", alimentosJson);
 
-            String apiUrl = Constantes.URL_BASE + RUTA + comida.getId();
+            String apiUrl = Constantes.URL_REST + RUTA + comida.getId();
             HttpClient cliente = HttpClient.newHttpClient();
             HttpRequest solicitudHttp = HttpRequest.newBuilder()
                     .uri(URI.create(apiUrl))
@@ -182,7 +182,7 @@ public class ComidaDAO {
         HashMap<String, Object> respuesta = new HashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        String apiUrl = Constantes.URL_REST + RUTA + id;
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder()
                 .uri(URI.create(apiUrl))

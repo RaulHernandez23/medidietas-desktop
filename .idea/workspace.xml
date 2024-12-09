@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Comida): lista conexion para la tabla de comidas">
+    <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Experto): funcionando el cierre de sesion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/AlimentosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/AlimentosController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/AlimentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ComidaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ComidaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/daos/ExpertoNutricionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +176,8 @@
       <workItem from="1733532309278" duration="19398000" />
       <workItem from="1733584299368" duration="7434000" />
       <workItem from="1733684117152" duration="4338000" />
+      <workItem from="1733724237313" duration="602000" />
+      <workItem from="1733780784750" duration="2392000" />
     </task>
     <task id="LOCAL-00001" summary="fix(Run): agregado archivo de inicio para correr con gradlew">
       <option name="closed" value="true" />

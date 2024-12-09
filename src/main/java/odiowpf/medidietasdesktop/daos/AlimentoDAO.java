@@ -16,7 +16,6 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class AlimentoDAO {
 
@@ -26,7 +25,7 @@ public class AlimentoDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + "unidades-medida";
+        String apiUrl = Constantes.URL_REST + RUTA + "unidades-medida";
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                 .header("x-token", GestorToken.TOKEN)
@@ -58,7 +57,7 @@ public class AlimentoDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + "categorias";
+        String apiUrl = Constantes.URL_REST + RUTA + "categorias";
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                 .header("x-token", GestorToken.TOKEN)
@@ -90,7 +89,7 @@ public class AlimentoDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA;
+        String apiUrl = Constantes.URL_REST + RUTA;
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                 .header("x-token", GestorToken.TOKEN)
@@ -132,7 +131,7 @@ public class AlimentoDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        String apiUrl = Constantes.URL_REST + RUTA + id;
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                 .header("x-token", GestorToken.TOKEN)
@@ -172,7 +171,7 @@ public class AlimentoDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + id;
+        String apiUrl = Constantes.URL_REST + RUTA + id;
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                 .header("x-token", GestorToken.TOKEN)
@@ -213,7 +212,7 @@ public class AlimentoDAO {
             alimentoJson.put("id_categoria", alimento.getIdCategoria());
             alimentoJson.put("id_unidad_medida", alimento.getIdUnidadMedida());
 
-            String apiUrl = Constantes.URL_BASE + RUTA;
+            String apiUrl = Constantes.URL_REST + RUTA;
             HttpClient cliente = HttpClient.newHttpClient();
             HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                     .header("x-token", GestorToken.TOKEN)
@@ -255,7 +254,7 @@ public class AlimentoDAO {
             alimentoJson.put("id_categoria", alimento.getIdCategoria());
             alimentoJson.put("id_unidad_medida", alimento.getIdUnidadMedida());
 
-            String apiUrl = Constantes.URL_BASE + RUTA + alimento.getId();
+            String apiUrl = Constantes.URL_REST + RUTA + alimento.getId();
             HttpClient cliente = HttpClient.newHttpClient();
             HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                     .header("x-token", GestorToken.TOKEN)
