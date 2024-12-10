@@ -95,7 +95,6 @@ public class RegistrarComidaController {
     public void InicializarModificarComida(int comidaId) {
         lblTituloVentana.setText(Constantes.TITULO_MODIFICAR_COMIDA);
         this.comidaid = comidaId;
-        System.out.println(comidaId);
         crearListeners();
         obtenerAlimentos();
         btnRegistrar.setDisable(true);
@@ -103,6 +102,7 @@ public class RegistrarComidaController {
         configurarTablaAlimentos();
         obtenerDetalleComida();
         esModificacion = true;
+        btnRegistrar.setText(Constantes.TITULO_MODIFICAR_COMIDA);
     }
 
     @FXML

@@ -29,6 +29,5 @@ public class Constantes {
 
     //Titulos
     public static final String TITULO_REGISTRAR_COMIDA = "Registrar Comida";
-    public static final String TITULO_MODIFICAR_COMIDA = "Modificar Comida";
-
+    public static final String TITULO_MODIFICAR_COMIDA = "Modificar comida";
 }

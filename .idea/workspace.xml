@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Comida): agregados metodo para registrar 1 comida">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/ComidasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/ComidasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/RegistrarComidaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/RegistrarComidaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Comida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Comida.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
