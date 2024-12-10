@@ -62,6 +62,9 @@ public class RegistrarComidaController {
     private TextArea tfReceta;
 
     @FXML
+    private Label lblTituloVentana;
+
+    @FXML
     private TableView<Map.Entry<String, Double>> tvTablaAlimentos;
 
     private HashMap<String, Double> alimentos;
@@ -69,10 +72,17 @@ public class RegistrarComidaController {
     @FXML
     private WebView wvVideo;
 
+    private int comidaid;
+
+    private boolean esModificacion = false;
+
     private ObservableList<String> nombresAlimentos;
+
+    private Comida comidaAModificar;
 
     @FXML
     public void initialize() {
+        lblTituloVentana.setText(Constantes.TITULO_REGISTRAR_COMIDA);
         crearListeners();
         obtenerAlimentos();
 
@@ -80,6 +90,19 @@ public class RegistrarComidaController {
         btnAgregarAlimento.setDisable(true);
 
         configurarTablaAlimentos();
+    }
+
+    public void InicializarModificarComida(int comidaId) {
+        lblTituloVentana.setText(Constantes.TITULO_MODIFICAR_COMIDA);
+        this.comidaid = comidaId;
+        System.out.println(comidaId);
+        crearListeners();
+        obtenerAlimentos();
+        btnRegistrar.setDisable(true);
+        btnAgregarAlimento.setDisable(true);
+        configurarTablaAlimentos();
+        obtenerDetalleComida();
+        esModificacion = true;
     }
 
     @FXML
@@ -97,6 +120,14 @@ public class RegistrarComidaController {
 
     @FXML
     void actionRegistrar(ActionEvent event) {
+        if (!esModificacion ) {
+            registrarComida();
+        }else{
+            modificarComida();
+        }
+    }
+
+    private void registrarComida() {
         String nombre = tfNombreComida.getText();
         String receta = tfReceta.getText();
         String videoLink = tfLinkVideo.getText();
@@ -319,4 +350,68 @@ public class RegistrarComidaController {
             }
         }
     }
+
+    private void obtenerDetalleComida(){
+        HashMap<String, Object> respuesta = ComidaDAO.obtenerComidaPorId(comidaid);
+
+        Boolean error = (Boolean) respuesta.get(Constantes.KEY_ERROR);
+        if (!error) {
+            comidaAModificar = (Comida) respuesta.get(Constantes.KEY_OBJETO);
+
+            if (comidaAModificar != null) {
+                tfNombreComida.setText(comidaAModificar.getNombre());
+                tfLinkVideo.setText(comidaAModificar.getPreparacionVideo());
+                tfReceta.setText(comidaAModificar.getReceta());
+
+                alimentos = comidaAModificar.getAlimentos();
+                if (alimentos != null) {
+                    ObservableList<Map.Entry<String, Double>> items =
+                            FXCollections.observableArrayList(alimentos.entrySet());
+                    tvTablaAlimentos.setItems(items);
+                }
+            }
+        } else {
+            String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
+            Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+        }
+    }
+
+    private boolean compararComidaConCampos() {
+        if (comidaAModificar == null) {
+            return false;
+        }
+
+        boolean nombreIgual = tfNombreComida.getText().equals(comidaAModificar.getNombre());
+        boolean linkVideoIgual = tfLinkVideo.getText().equals(comidaAModificar.getPreparacionVideo());
+        boolean recetaIgual = tfReceta.getText().equals(comidaAModificar.getReceta());
+
+        boolean alimentosIguales = alimentos.equals(comidaAModificar.getAlimentos());
+
+        return nombreIgual && linkVideoIgual && recetaIgual && alimentosIguales;
+    }
+
+    private void modificarComida() {
+        if(!compararComidaConCampos()) {
+            String nombre = tfNombreComida.getText();
+            String receta = tfReceta.getText();
+            String videoLink = tfLinkVideo.getText();
+
+            Comida comidaEditada = new Comida(comidaAModificar.getId(), nombre, videoLink, receta, comidaAModificar.getEstado(), alimentos);
+            HashMap<String, Object> respuesta = ComidaDAO.editarComida(comidaEditada);
+            if (!(boolean) respuesta.get("error")) {
+                Alertas.mostrarAlertaInformacion(Constantes.ALERTA_MODIFICACION_COMIDA_TITULO
+                        , respuesta.get("mensaje").toString());
+                cerrarVentana();
+            } else {
+                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, respuesta.get("mensaje").toString());
+            }
+        }else{
+            Alertas.mostrarAlertaInformacion(Constantes.ALERTA_MODIFICACION_COMIDA_TITULO,
+                    Constantes.ALERTA_MODIFICACION_COMIDA_CONTENIDO);
+            cerrarVentana();
+        }
+
+
+    }
+
 }

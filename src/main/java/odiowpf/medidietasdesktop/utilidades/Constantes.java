@@ -23,5 +23,12 @@ public class Constantes {
     // Mensajes
     public static final String ALERTA_CONFIRMACION_TITULO = "Confirmación";
     public static final String ALERTA_CONFIRMACION_CONTENIDO = "¿Estas seguro de cancelar la operación?";
+    public static final String ALERTA_ERROR_TITULO = "Error";
+    public static final String ALERTA_MODIFICACION_COMIDA_TITULO = "Modificación exitosa";
+    public static final String ALERTA_MODIFICACION_COMIDA_CONTENIDO = "La comida se modificó correctamente.";
+
+    //Titulos
+    public static final String TITULO_REGISTRAR_COMIDA = "Registrar Comida";
+    public static final String TITULO_MODIFICAR_COMIDA = "Modificar Comida";
 
 }

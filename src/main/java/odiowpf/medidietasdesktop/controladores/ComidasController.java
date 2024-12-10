@@ -64,7 +64,7 @@ public class ComidasController {
                 btnEditar.setStyle("-fx-background-color: orange;");
                 btnEditar.setOnAction(event -> {
                     Comida comida = getTableView().getItems().get(getIndex());
-                    System.out.println("Editar: " + comida.getNombre());
+                    abrirVentanaEdicion(comida.getId());
                 });
             }
 
@@ -146,6 +146,28 @@ public class ComidasController {
         } catch (IOException e) {
             e.printStackTrace();
             // Manejo de errores
+        }
+    }
+
+    private void abrirVentanaEdicion(int comidaId) {
+        try {
+            // Cargar el archivo FXML de la nueva ventana
+            FXMLLoader loader =
+                    new FXMLLoader(getClass()
+                            .getResource("/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml"));
+            Parent root = loader.load();
+            RegistrarComidaController controlador = loader.getController();
+            controlador.InicializarModificarComida(comidaId);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Editar Comida");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            llenarDatos();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

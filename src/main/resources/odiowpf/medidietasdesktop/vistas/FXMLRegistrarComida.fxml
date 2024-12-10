@@ -256,7 +256,7 @@
                   </GridPane>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <left>
-                        <Label fx:id="lbTituloVentana" styleClass="title-medium" text="Registrar comida" BorderPane.alignment="CENTER">
+                        <Label fx:id="lblTituloVentana" styleClass="title-medium" text="Registrar comida" BorderPane.alignment="CENTER">
                            <padding>
                               <Insets left="10.0" />
                            </padding>

@@ -26,6 +26,15 @@ public class Comida {
         this.alimentos = alimentos;
     }
 
+    public Comida(int id, String nombre, String preparacion_video, String receta, boolean estado, HashMap<String, Double> alimentos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.preparacion_video = preparacion_video;
+        this.receta = receta;
+        this.estado = estado;
+        this.alimentos = alimentos;
+    }
+
     public int getId() { return id; }
     public String getNombre() { return nombre; }
     public String getPreparacionVideo() { return preparacion_video; }
