@@ -21,7 +21,7 @@ public class ExpertoNutricionDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + "login";
+        String apiUrl = Constantes.URL_REST + RUTA + "login";
 
         try {
             HttpClient cliente = HttpClient.newHttpClient();
@@ -72,7 +72,7 @@ public class ExpertoNutricionDAO {
         HashMap<String, Object> respuesta = new HashMap<String, Object>();
         respuesta.put(Constantes.KEY_ERROR, true);
 
-        String apiUrl = Constantes.URL_BASE + RUTA + "logout";
+        String apiUrl = Constantes.URL_REST + RUTA + "logout";
         HttpClient cliente = HttpClient.newHttpClient();
         HttpRequest solicitudHttp = HttpRequest.newBuilder().uri(URI.create(apiUrl))
                 .header("x-token", GestorToken.TOKEN)

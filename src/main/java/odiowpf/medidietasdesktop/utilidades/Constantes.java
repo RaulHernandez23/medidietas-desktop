@@ -11,9 +11,11 @@ public class Constantes {
     public static final String KEY_IMAGEN = "imagen";
 
     // Constantes para la conexión con la API
-    public static final String PUERTO = "8086";
-    public static final String URL_BASE = "http://localhost:" + PUERTO + "/api/medidietas/";
-    public static final String URL_GRPC = "localhost:50051";
+    public static final String PUERTO_REST = "8081";
+    public static final String PUERTO_GRPC = "50052";
+    public static final String HOST = "localhost";
+    public static final String URL_REST = "http://" + HOST + ":" + PUERTO_REST + "/api/medidietas/";
+    public static final String URL_GRPC = HOST + ":" + PUERTO_GRPC;
 
     // Formatos
     public static final SimpleDateFormat FORMATO_FECHA = new SimpleDateFormat("yyyy-MM-dd");
