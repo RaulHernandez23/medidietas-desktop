@@ -123,6 +123,7 @@ public class ComidasController {
     private void llenarDatos() {
         HashMap<String, Object> respuesta = ComidaDAO.obtenerComidas();
         ArrayList<Comida> listaComidas = (ArrayList<Comida>) respuesta.get(Constantes.KEY_OBJETO);
+
         comidas = FXCollections.observableArrayList(listaComidas);
         tablaComidas.setItems(comidas);
     }
@@ -140,6 +141,7 @@ public class ComidasController {
             stage.setTitle("Registrar comida");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
+            llenarDatos();
 
         } catch (IOException e) {
             e.printStackTrace();

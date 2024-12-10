@@ -19,5 +19,7 @@ public class Constantes {
     public static final SimpleDateFormat FORMATO_FECHA = new SimpleDateFormat("yyyy-MM-dd");
 
     // Mensajes
+    public static final String ALERTA_CONFIRMACION_TITULO = "Confirmación";
+    public static final String ALERTA_CONFIRMACION_CONTENIDO = "¿Estas seguro de cancelar la operación?";
 
 }

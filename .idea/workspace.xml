@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07742f8f-806e-4ff3-8d58-7acba35f1f92" name="Changes" comment="feat(Comida): agregados metodo para registrar 1 comida">
+      <change afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Alertas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/ComidasController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/ComidasController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/RegistrarComidaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/controladores/RegistrarComidaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Comida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/modelos/Comida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/odiowpf/medidietasdesktop/utilidades/Constantes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/Menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/css/Menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLRegistrarAlimento.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLRegistrarAlimento.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/odiowpf/medidietasdesktop/vistas/FXMLRegistrarComida.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,12 +100,12 @@
     &quot;assignee&quot;: &quot;RaulHernandez23&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/RaulHernandez23/medidietas-desktop.git",
-    "accountId": "e7f7f71d-5d14-4c2e-8ac2-0defcf3664a1"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/RaulHernandez23/medidietas-desktop.git&quot;,
+    &quot;accountId&quot;: &quot;e7f7f71d-5d14-4c2e-8ac2-0defcf3664a1&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -122,32 +123,32 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Run with Gradlew .executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.gradlew.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.medidietas-desktop [:ClienteImagenGrpc.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.medidietas-desktop [:HelloApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.medidietas-desktop.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.4643678&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.kotlinCompiler&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.Run with Gradlew .executor": "Run",
+    "Gradle.gradlew.executor": "Run",
+    "Gradle.medidietas-desktop [:ClienteImagenGrpc.main()].executor": "Run",
+    "Gradle.medidietas-desktop [:HelloApplication.main()].executor": "Run",
+    "Gradle.medidietas-desktop.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "miguel",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.4643678",
+    "settings.editor.selected.configurable": "project.kotlinCompiler",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wizar\Desktop\Repos\medidietas-desktop\src\main\resources\odiowpf\medidietasdesktop\imagenes" />

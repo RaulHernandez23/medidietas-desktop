@@ -116,7 +116,7 @@
 .text-field-busqueda {
     -fx-font-size: 12px;
     -fx-background-color: -fx-blanco;
-    -fx-text-fill: -fx-azul;
+    -fx-text-fill: -fx-negro;
     -fx-border-width: 2px; /* Grosor del borde */
     -fx-border-color: -fx-azul; /* Color azul para el borde */
     -fx-border-radius: 10px; /* Radios para esquinas redondeadas */
@@ -137,7 +137,7 @@
 .text-area-campo {
     -fx-font-size: 12px;
     -fx-background-color: -fx-blanco;
-    -fx-text-fill: -fx-azul;
+    -fx-text-fill: -fx-negro;
     -fx-border-width: 2px;
     -fx-border-color: -fx-azul;
     -fx-border-radius: 10px;
@@ -151,7 +151,7 @@
 .combo-box-campo {
     -fx-font-size: 12px;
     -fx-background-color: -fx-blanco;
-    -fx-text-fill: -fx-azul;
+    -fx-text-fill: -fx-negro;
     -fx-border-width: 2px; /* Grosor del borde */
     -fx-border-color: -fx-azul; /* Color azul para el borde */
     -fx-border-radius: 10px; /* Radios para esquinas redondeadas */

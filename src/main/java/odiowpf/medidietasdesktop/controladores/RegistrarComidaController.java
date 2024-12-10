@@ -1,14 +1,30 @@
 package odiowpf.medidietasdesktop.controladores;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.MapValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
+import odiowpf.medidietasdesktop.daos.AlimentoDAO;
+import odiowpf.medidietasdesktop.daos.ComidaDAO;
+import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.modelos.Comida;
+import odiowpf.medidietasdesktop.utilidades.Alertas;
+import odiowpf.medidietasdesktop.utilidades.Constantes;
+import odiowpf.medidietasdesktop.utilidades.ConversorUrlYoutube;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrarComidaController {
 
@@ -19,7 +35,7 @@ public class RegistrarComidaController {
     private MFXButton btnRegistrar;
 
     @FXML
-    private ComboBox<?> cbAlimentos;
+    private ComboBox<String> cbAlimentos;
 
     @FXML
     private Label lblErrorCantidad;
@@ -34,9 +50,6 @@ public class RegistrarComidaController {
     private Label lblErrorReceta;
 
     @FXML
-    private Label lblTituloVentana;
-
-    @FXML
     private TextField tfCantidad;
 
     @FXML
@@ -49,32 +62,57 @@ public class RegistrarComidaController {
     private TextArea tfReceta;
 
     @FXML
-    private TableView<?> tvTablaAlimentos;
+    private TableView<Map.Entry<String, Double>> tvTablaAlimentos;
+
+    private HashMap<String, Double> alimentos;
 
     @FXML
     private WebView wvVideo;
 
-    @javafx.fxml.FXML
+    private ObservableList<String> nombresAlimentos;
+
+    @FXML
     public void initialize() {
         crearListeners();
+        obtenerAlimentos();
 
         btnRegistrar.setDisable(true);
         btnAgregarAlimento.setDisable(true);
+
+        configurarTablaAlimentos();
     }
 
     @FXML
     void actionAgregar(ActionEvent event) {
-
+        agregarAlimentoATabla();
     }
 
     @FXML
     void actionCancelar(ActionEvent event) {
-
+        if (Alertas.mostrarAlertaConfirmacion(Constantes.ALERTA_CONFIRMACION_TITULO,
+                Constantes.ALERTA_CONFIRMACION_CONTENIDO)) {
+            cerrarVentana();
+        }
     }
 
     @FXML
     void actionRegistrar(ActionEvent event) {
+        String nombre = tfNombreComida.getText();
+        String receta = tfReceta.getText();
+        String videoLink = tfLinkVideo.getText();
+        Comida comida = new Comida(nombre, videoLink, receta, alimentos);
+        HashMap<String, Object> resultado = ComidaDAO.registrarComida(comida);
+        if (!(boolean) resultado.get("error")) {
+            Alertas.mostrarAlertaInformacion("Registro exitoso", resultado.get("mensaje").toString());
+            cerrarVentana();
+        } else {
+            Alertas.mostrarAlertaError("Error al registrar", resultado.get("mensaje").toString());
+        }
+    }
 
+    private void cerrarVentana() {
+        Stage escenario = (Stage) tfNombreComida.getScene().getWindow();
+        escenario.close();
     }
 
     private void crearListeners() {
@@ -117,11 +155,33 @@ public class RegistrarComidaController {
                 lblErrorLinkVideo.setText(mensajeError);
                 lblErrorLinkVideo.setVisible(true);
             } else {
+                cargarVideo();
                 lblErrorLinkVideo.setVisible(false);
             }
             activarBotonRegistrar();
         });
 
+        cbAlimentos.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            boolean cantidadValida = obtenerMensajeErrorCantidades(tfCantidad.getText()).isEmpty();
+
+            if (cbAlimentos.getSelectionModel().getSelectedItem() != null && cantidadValida) {
+                activarBotonAgregar();
+            }
+        });
+
+        tvTablaAlimentos.itemsProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && !newValue.equals(oldValue)) {
+                activarBotonRegistrar();
+            }
+        });
+
+        tvTablaAlimentos.getItems().addListener((ListChangeListener<Map.Entry<String, Double>>) change -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved()) {
+                    activarBotonRegistrar();
+                }
+            }
+        });
     }
 
     private String obtenerMensajeError(String texto) {
@@ -156,14 +216,107 @@ public class RegistrarComidaController {
         boolean recetaValida = obtenerMensajeErrorReceta(tfReceta.getText()).isEmpty();
         //La implementacion de link de video aun no esta completa, falta agregar que el WebView devuelva un bool
         boolean linkVideoValido = obtenerMensajeErrorReceta(tfLinkVideo.getText()).isEmpty();
+        boolean tablaLlena = !alimentos.isEmpty();
+        imprimirAlimentos();
         btnRegistrar.setDisable(!nombreComidaValido
                 || !recetaValida
-                || !linkVideoValido);
+                || !linkVideoValido
+                || !tablaLlena);
     }
 
     private void activarBotonAgregar() {
         boolean cantidadValida = obtenerMensajeErrorCantidades(tfCantidad.getText()).isEmpty();
-        btnAgregarAlimento.setDisable(!cantidadValida);
+        boolean alimentoSeleccionado = cbAlimentos.getSelectionModel().getSelectedItem() != null;
+        btnAgregarAlimento.setDisable(!cantidadValida
+                || !alimentoSeleccionado);
     }
 
+    private void obtenerAlimentos() {
+        HashMap<String, Object> respuesta = AlimentoDAO.obtenerAlimentos();
+        ArrayList<Alimento> listaAlimentos = (ArrayList<Alimento>) respuesta.get(Constantes.KEY_OBJETO);
+
+        nombresAlimentos = FXCollections.observableArrayList();
+        for (Alimento alimento : listaAlimentos) {
+            nombresAlimentos.add(alimento.getNombre());
+        }
+        cbAlimentos.setItems(nombresAlimentos);
+    }
+
+    private void configurarTablaAlimentos(){
+        alimentos = new HashMap<>();
+
+        TableColumn<Map.Entry<String, Double>, String> nombreColumn = new TableColumn<>("Nombre");
+        nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getKey()));
+
+        TableColumn<Map.Entry<String, Double>, String> cantidadColumn = new TableColumn<>("Cantidad");
+        cantidadColumn.setCellValueFactory(data -> new SimpleStringProperty(String.valueOf(data.getValue().getValue())));
+
+        // Columna para eliminar
+        TableColumn<Map.Entry<String, Double>, Void> eliminarColumna = new TableColumn<>("Eliminar");
+        eliminarColumna.setCellFactory(param -> new TableCell<Map.Entry<String, Double>, Void>() {
+            private final Button btnEliminar = new Button();
+
+            {
+                ImageView imageView = new ImageView(new Image(getClass()
+                        .getResource("/odiowpf/medidietasdesktop/imagenes/eliminar-icono.png")
+                        .toExternalForm()));
+                imageView.setFitWidth(20);
+                imageView.setFitHeight(20);
+                btnEliminar.setGraphic(imageView);
+                btnEliminar.setStyle("-fx-background-color: red;");
+                btnEliminar.setOnAction(event -> {
+                    Map.Entry<String, Double> alimento = getTableView().getItems().get(getIndex());
+                    alimentos.remove(alimento.getKey()); // Elimina del HashMap
+                    getTableView().getItems().remove(alimento); // Elimina de la tabla
+                    activarBotonRegistrar();
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(btnEliminar);
+                    setAlignment(Pos.CENTER);
+                }
+            }
+        });
+
+        nombreColumn.prefWidthProperty().bind(tvTablaAlimentos.widthProperty().multiply(0.35));
+        cantidadColumn.prefWidthProperty().bind(tvTablaAlimentos.widthProperty().multiply(0.35));
+        eliminarColumna.prefWidthProperty().bind(tvTablaAlimentos.widthProperty().multiply(0.25));
+
+        tvTablaAlimentos.getColumns().addAll(nombreColumn, cantidadColumn, eliminarColumna);
+    }
+
+    private void agregarAlimentoATabla() {
+        String selectedNombre = cbAlimentos.getSelectionModel().getSelectedItem();
+        Double cantidad = Double.parseDouble(tfCantidad.getText());
+        alimentos.put(selectedNombre, cantidad);
+        ObservableList<Map.Entry<String, Double>> data = FXCollections.observableArrayList(alimentos.entrySet());
+        tvTablaAlimentos.setItems(data);
+    }
+
+    private void cargarVideo(){
+        String videoUrl = tfLinkVideo.getText();
+        String videoUrlConvertida = ConversorUrlYoutube.convertirUrl(videoUrl);
+
+        if (videoUrlConvertida != null && !videoUrlConvertida.isEmpty()) {
+            wvVideo.getEngine().load(videoUrlConvertida);
+        }
+    }
+
+    //Metodo de depuracion
+    private void imprimirAlimentos() {
+        if (alimentos.isEmpty()) {
+            System.out.println("No hay alimentos registrados.");
+        } else {
+            System.out.println("Alimentos registrados:");
+            for (Map.Entry<String, Double> entry : alimentos.entrySet()) {
+                System.out.println("Nombre: " + entry.getKey() + ", Cantidad: " + entry.getValue());
+            }
+        }
+    }
 }
