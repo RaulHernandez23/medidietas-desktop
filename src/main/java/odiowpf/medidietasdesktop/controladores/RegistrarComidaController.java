@@ -410,8 +410,5 @@ public class RegistrarComidaController {
                     Constantes.ALERTA_MODIFICACION_COMIDA_CONTENIDO);
             cerrarVentana();
         }
-
-
     }
-
 }
