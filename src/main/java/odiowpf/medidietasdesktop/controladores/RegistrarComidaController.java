@@ -93,16 +93,17 @@ public class RegistrarComidaController {
     }
 
     public void InicializarModificarComida(int comidaId) {
-        lblTituloVentana.setText(Constantes.TITULO_MODIFICAR_COMIDA);
         this.comidaid = comidaId;
+        lblTituloVentana.setText(Constantes.TITULO_MODIFICAR_COMIDA);
+        btnRegistrar.setText(Constantes.TITULO_MODIFICAR_COMIDA);
         crearListeners();
         obtenerAlimentos();
-        btnRegistrar.setDisable(true);
-        btnAgregarAlimento.setDisable(true);
         configurarTablaAlimentos();
         obtenerDetalleComida();
+        btnRegistrar.setDisable(true);
+        btnAgregarAlimento.setDisable(true);
         esModificacion = true;
-        btnRegistrar.setText(Constantes.TITULO_MODIFICAR_COMIDA);
+
     }
 
     @FXML

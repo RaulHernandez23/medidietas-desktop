@@ -224,7 +224,12 @@ public class AlimentoDAO {
             JSONObject respuestaJson = new JSONObject(cuerpoRespuesta);
 
             respuesta.put(Constantes.KEY_ERROR, false);
-            respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+
+            if (respuestaJson.has("mensaje")) {
+                respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("mensaje"));
+            } else {
+                respuesta.put(Constantes.KEY_MENSAJE, respuestaJson.getString("error"));
+            }
         } catch (Exception ex) {
             respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
             // TO DO Implementar eliminacion de la imagen si falla el registro

@@ -44,6 +44,23 @@ public class Alimento {
         this.id_unidad_medida = id_unidad_medida;
     }
 
+    public Alimento(int id, String nombre, int calorias, double carbohidratos, double grasas, double proteinas,
+                    String imagen, double tamano_racion, String marca, int id_categoria,
+                    int id_unidad_medida) {
+        this.id = id;
+        this.nombre = nombre;
+        this.calorias = calorias;
+        this.carbohidratos = carbohidratos;
+        this.grasas = grasas;
+        this.proteinas = proteinas;
+        this.imagen = imagen;
+        this.tamano_racion = tamano_racion;
+        this.estado = estado;
+        this.marca = marca;
+        this.id_categoria = id_categoria;
+        this.id_unidad_medida = id_unidad_medida;
+    }
+
     public int getId() { return id; }
     public String getNombre() { return nombre; }
     public int getCalorias() { return calorias; }
