@@ -21,6 +21,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import odiowpf.medidietasdesktop.daos.AlimentoDAO;
 import odiowpf.medidietasdesktop.modelos.Alimento;
+import odiowpf.medidietasdesktop.modelos.Comida;
+import odiowpf.medidietasdesktop.utilidades.Alertas;
 import odiowpf.medidietasdesktop.utilidades.Constantes;
 
 import java.io.IOException;
@@ -99,7 +101,7 @@ public class AlimentosController {
                 btnEliminar.setStyle("-fx-background-color: red;");
                 btnEliminar.setOnAction(event -> {
                     Alimento alimento = getTableView().getItems().get(getIndex());
-                    System.out.println("Eliminar: " + alimento.getNombre());
+                    eliminarAlimento(alimento.getId());
                 });
             }
 
@@ -129,7 +131,14 @@ public class AlimentosController {
     private void llenarDatos() {
         HashMap<String, Object> respuesta = AlimentoDAO.obtenerAlimentos();
         ArrayList<Alimento> listaAlimentos = (ArrayList<Alimento>) respuesta.get(Constantes.KEY_OBJETO);
-        alimentos = FXCollections.observableArrayList(listaAlimentos);
+
+        ArrayList<Alimento> alimentosVigentes = new ArrayList<>();
+        for (Alimento alimento : listaAlimentos) {
+            if (alimento.isEstado()) {
+                alimentosVigentes.add(alimento);
+            }
+        }
+        alimentos = FXCollections.observableArrayList(alimentosVigentes);
         tablaAlimentos.setItems(alimentos);
     }
 
@@ -170,6 +179,21 @@ public class AlimentosController {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void eliminarAlimento(int alimentoId) {
+        if (Alertas.mostrarAlertaConfirmacion(Constantes.ALERTA_CONFIRMACION_TITULO, Constantes.ALERTA_ELIMINAR_ALIMENTO)) {
+            HashMap<String, Object> respuesta = AlimentoDAO.eliminarAlimento(alimentoId);
+            Boolean error = (Boolean) respuesta.get(Constantes.KEY_ERROR);
+            if (!error) {
+                Alertas.mostrarAlertaInformacion(Constantes.ALERTA_CONFIRMACION_TITULO,
+                        Constantes.ALERTA_ELIMINAR_ALIMENTO_EXITO);
+                llenarDatos();
+            } else {
+                String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
+                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+            }
         }
     }
 }

@@ -30,6 +30,8 @@ public class Constantes {
     public static final String ALERTA_ELIMINAR_COMIDA_EXITO = "La comida fue eliminada correctamente";
     public static final String ALERTA_MODIFICACION_ALIMENTO_TITULO = "Modificación de alimento exitosa";
     public static final String ALERTA_MODIFICACION_ALIMENTO_CONTENIDO = "El alimento se modificó correctamente.";
+    public static final String ALERTA_ELIMINAR_ALIMENTO = "¿Estas seguro de eliminar este alimento?";
+    public static final String ALERTA_ELIMINAR_ALIMENTO_EXITO = "El alimento fue eliminado correctamente";
 
     //Titulos
     public static final String TITULO_REGISTRAR_COMIDA = "Registrar Comida";
@@ -38,6 +40,5 @@ public class Constantes {
     public static final String CARGAR_IMAGEN_TITULO = "Cargar imagen de alimento";
     public static final String ALERTA_REGISTRO_ALIMENTO_TITULO = "Registro de alimento";
     public static final String TITULO_MODIFICAR_ALIMENTO = "Modificar alimento";
-
 
 }

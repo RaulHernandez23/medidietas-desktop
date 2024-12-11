@@ -126,7 +126,6 @@ public class ComidasController {
         HashMap<String, Object> respuesta = ComidaDAO.obtenerComidas();
         ArrayList<Comida> listaComidas = (ArrayList<Comida>) respuesta.get(Constantes.KEY_OBJETO);
 
-        // Filtro los datos a solo los alimentos vigentes
         ArrayList<Comida> comidasVigentes = new ArrayList<>();
         for (Comida comida : listaComidas) {
             if (comida.getEstado()) {

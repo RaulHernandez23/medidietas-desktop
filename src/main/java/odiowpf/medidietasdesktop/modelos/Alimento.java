@@ -55,7 +55,6 @@ public class Alimento {
         this.proteinas = proteinas;
         this.imagen = imagen;
         this.tamano_racion = tamano_racion;
-        this.estado = estado;
         this.marca = marca;
         this.id_categoria = id_categoria;
         this.id_unidad_medida = id_unidad_medida;
