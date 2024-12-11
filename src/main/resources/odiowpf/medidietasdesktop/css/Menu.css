@@ -200,3 +200,11 @@
     -fx-border-color: #32CD32; /* Verde lima */
     -fx-text-fill: black; /* Texto en negro para buena legibilidad */
 }
+
+.hover-effect {
+    -fx-opacity: 1.0; /* Opacidad normal */
+}
+
+.hover-effect:hover {
+    -fx-opacity: 0.7; /* Cambia la opacidad cuando el mouse está sobre el ImageView */
+}

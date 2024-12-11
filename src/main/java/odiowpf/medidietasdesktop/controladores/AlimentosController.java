@@ -145,10 +145,12 @@ public class AlimentosController {
             stage.setTitle("Registrar alimento");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.showAndWait();
+            llenarDatos();
 
         } catch (IOException e) {
             e.printStackTrace();
-            // Manejo de errores
         }
     }
+
+
 }

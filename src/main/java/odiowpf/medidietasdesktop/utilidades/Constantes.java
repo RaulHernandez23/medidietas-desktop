@@ -28,9 +28,11 @@ public class Constantes {
     public static final String ALERTA_MODIFICACION_COMIDA_CONTENIDO = "La comida se modificó correctamente.";
     public static final String ALERTA_ELIMINAR_COMIDA = "¿Estas seguro de eliminar esta comida?";
     public static final String ALERTA_ELIMINAR_COMIDA_EXITO = "La comida fue eliminada correctamente";
+
     //Titulos
     public static final String TITULO_REGISTRAR_COMIDA = "Registrar Comida";
     public static final String TITULO_MODIFICAR_COMIDA = "Modificar comida";
-
-
+    public static final String TITULO_REGISTRAR_ALIMENTO = "Registrar Alimento";
+    public static final String CARGAR_IMAGEN_TITULO = "Cargar imagen de alimento";
+    public static final String ALERTA_REGISTRO_ALIMENTO_TITULO = "Registro de alimento";
 }

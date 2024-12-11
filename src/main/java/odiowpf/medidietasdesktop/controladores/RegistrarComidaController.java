@@ -248,7 +248,6 @@ public class RegistrarComidaController {
         //La implementacion de link de video aun no esta completa, falta agregar que el WebView devuelva un bool
         boolean linkVideoValido = obtenerMensajeErrorReceta(tfLinkVideo.getText()).isEmpty();
         boolean tablaLlena = !alimentos.isEmpty();
-        imprimirAlimentos();
         btnRegistrar.setDisable(!nombreComidaValido
                 || !recetaValida
                 || !linkVideoValido

@@ -155,7 +155,6 @@ public class ComidasController {
 
         } catch (IOException e) {
             e.printStackTrace();
-            // Manejo de errores
         }
     }
 

@@ -17,6 +17,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
 import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
+import odiowpf.medidietasdesktop.utilidades.ConversorImagen;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -112,14 +113,7 @@ public class MenuController
     }
 
     private void configurarFotoPerfil() {
-        // Cargar la imagen original
-        Image originalImage =
-                new Image(getClass()
-                        .getResource("/odiowpf/medidietasdesktop/imagenes/frutas-IniciarSesion.png")
-                        .toExternalForm());
-
-        // Crear una imagen cuadrada con relleno
-        Image squareImage = ajustarImagenConRelleno(fotoPerfil, 60);
+        Image squareImage = ConversorImagen.ajustarImagenConRelleno(fotoPerfil, 60);
 
         // Crear el ImageView con la imagen cuadrada
         ivFotoPerfil = new ImageView(squareImage);
@@ -137,32 +131,6 @@ public class MenuController
         // Colocar el ImageView dentro del BorderPane
         StackPane stackPane = new StackPane(ivFotoPerfil);
         bpFotoPerfil.setCenter(stackPane);
-    }
-
-    // Método para ajustar una imagen rectangular a un cuadrado con relleno
-    private Image ajustarImagenConRelleno(Image originalImage, int size) {
-        // Crear un lienzo cuadrado
-        WritableImage writableImage = new WritableImage(size, size);
-        PixelWriter writer = writableImage.getPixelWriter();
-
-        // Dibujar la imagen original centrada en el lienzo
-        double originalWidth = originalImage.getWidth();
-        double originalHeight = originalImage.getHeight();
-        double scale = Math.min(size / originalWidth, size / originalHeight); // Escalar la imagen para que quepa
-        double offsetX = (size - originalWidth * scale) / 2; // Calcular el desplazamiento horizontal
-        double offsetY = (size - originalHeight * scale) / 2; // Calcular el desplazamiento vertical
-
-        // Dibujar la imagen escalada y centrada
-        Canvas canvas = new Canvas(size, size);
-        GraphicsContext gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.TRANSPARENT); // Fondo transparente
-        gc.fillRect(0, 0, size, size); // Llenar el fondo
-        gc.drawImage(originalImage, offsetX, offsetY, originalWidth * scale, originalHeight * scale);
-
-        // Tomar una instantánea del Canvas y devolverla como Image
-        SnapshotParameters params = new SnapshotParameters();
-        params.setFill(Color.TRANSPARENT); // Mantener la transparencia
-        return canvas.snapshot(params, writableImage);
     }
 
     private void inicializarComponentesVisuales() {

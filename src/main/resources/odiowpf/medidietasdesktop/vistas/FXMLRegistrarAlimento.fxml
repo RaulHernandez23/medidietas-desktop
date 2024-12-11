@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -75,12 +76,12 @@
                                           <Insets />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                    <TextField fx:id="tfNombreAlimento" styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                        <GridPane.margin>
                                           <Insets right="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label styleClass="label-error" text="Ingrese un nombre válido" GridPane.rowIndex="2">
+                                    <Label fx:id="lblErrorNombreAlimento" styleClass="label-error" text="Ingrese un nombre válido" visible="false" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets />
                                        </GridPane.margin>
@@ -97,17 +98,17 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Label styleClass="subtitle-busqueda" text="Marca" GridPane.valignment="BOTTOM">
+                                    <Label styleClass="subtitle-busqueda" text="Marca:" GridPane.valignment="BOTTOM">
                                        <GridPane.margin>
                                           <Insets />
                                        </GridPane.margin>
                                     </Label>
-                                    <TextField styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                    <TextField fx:id="tfMarca" styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                        <GridPane.margin>
                                           <Insets right="10.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label styleClass="label-error" text="Ingrese una marca válida" GridPane.rowIndex="2" />
+                                    <Label fx:id="lblErrorMarca" styleClass="label-error" text="Ingrese una marca válida" visible="false" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <GridPane GridPane.rowIndex="2">
@@ -134,7 +135,7 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </Label>
-                                          <ComboBox maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="267.0" styleClass="combo-box-campo" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                          <ComboBox fx:id="cbUnidadMedida" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="267.0" styleClass="combo-box-campo" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets right="10.0" />
                                              </GridPane.margin>
@@ -156,12 +157,12 @@
                                                 <Insets />
                                              </GridPane.margin>
                                           </Label>
-                                          <TextField styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                          <TextField fx:id="tfTamanoRacion" styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                              <GridPane.margin>
                                                 <Insets right="10.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <Label styleClass="label-error" text="Ingrese una marca válida" GridPane.rowIndex="2" />
+                                          <Label fx:id="lblErrorTamanoRacion" styleClass="label-error" text="Ingrese una marca válida" visible="false" GridPane.rowIndex="2" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -180,7 +181,7 @@
                                           <Insets />
                                        </GridPane.margin>
                                     </Label>
-                                    <ComboBox maxWidth="1.7976931348623157E308" styleClass="combo-box-campo" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                    <ComboBox fx:id="cbCategoria" maxWidth="1.7976931348623157E308" styleClass="combo-box-campo" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                        <GridPane.margin>
                                           <Insets right="10.0" />
                                        </GridPane.margin>
@@ -232,7 +233,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                                      <TextField fx:id="tfCalorias" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                                          <GridPane.margin>
                                                             <Insets right="10.0" />
                                                          </GridPane.margin>
@@ -241,7 +242,7 @@
                                                             <String fx:value="text-field-calorias" />
                                                          </styleClass>
                                                       </TextField>
-                                                      <Label styleClass="label-error" text="Dato inválido" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                                                      <Label fx:id="lblErrorCalorias" styleClass="label-error" text="Dato inválido" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                                                          <GridPane.margin>
                                                             <Insets />
                                                          </GridPane.margin>
@@ -263,7 +264,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                                      <TextField fx:id="tfGrasas" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                                          <GridPane.margin>
                                                             <Insets right="10.0" />
                                                          </GridPane.margin>
@@ -272,7 +273,7 @@
                                                             <String fx:value="text-field-grasas" />
                                                          </styleClass>
                                                       </TextField>
-                                                      <Label styleClass="label-error" text="Dato inválido" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                                                      <Label fx:id="lblErrorGrasas" styleClass="label-error" text="Dato inválido" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                                                    </children>
                                                 </GridPane>
                                                 <GridPane GridPane.columnIndex="2">
@@ -290,7 +291,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                                      <TextField fx:id="tfCarbohidratos" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                                          <GridPane.margin>
                                                             <Insets right="10.0" />
                                                          </GridPane.margin>
@@ -299,7 +300,7 @@
                                                             <String fx:value="text-field-carbohidratos" />
                                                          </styleClass>
                                                       </TextField>
-                                                      <Label styleClass="label-error" text="Dato inválido" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                                                      <Label fx:id="lblErrorCarbohidratos" styleClass="label-error" text="Dato inválido" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                                                    </children>
                                                 </GridPane>
                                                 <GridPane GridPane.columnIndex="3">
@@ -317,7 +318,7 @@
                                                             <Insets />
                                                          </GridPane.margin>
                                                       </Label>
-                                                      <TextField GridPane.rowIndex="1" GridPane.valignment="TOP">
+                                                      <TextField fx:id="tfProteinas" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                                          <GridPane.margin>
                                                             <Insets right="10.0" />
                                                          </GridPane.margin>
@@ -326,7 +327,7 @@
                                                             <String fx:value="text-field-proteinas" />
                                                          </styleClass>
                                                       </TextField>
-                                                      <Label styleClass="label-error" text="Dato inválido" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+                                                      <Label fx:id="lblErrorProteinas" styleClass="label-error" text="Dato inválido" visible="false" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
                                                    </children>
                                                 </GridPane>
                                              </children>
@@ -337,16 +338,25 @@
                               </GridPane>
                            </children>
                         </GridPane>
-                        <BorderPane fx:id="bpFotoPerfil" maxHeight="400.0" maxWidth="400.0" prefHeight="50.0" prefWidth="50.0" styleClass="profile-container" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <BorderPane fx:id="bpImagenAlimento" maxHeight="400.0" maxWidth="400.0" prefHeight="50.0" prefWidth="50.0" styleClass="profile-container" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <center>
-                              <ImageView fx:id="ivFotoPerfil" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="circle-image" BorderPane.alignment="CENTER">
+                              <ImageView fx:id="ivImagenAlimento" fitHeight="100.0" fitWidth="100.0" onMouseClicked="#actionCargarImagen" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                                  <effect>
                                     <Blend />
                                  </effect>
+                                 <BorderPane.margin>
+                                    <Insets />
+                                 </BorderPane.margin>
+                                 <image>
+                                    <Image url="@../imagenes/AgregarImagen-icono.png" />
+                                 </image>
+                                 <styleClass>
+                                    <String fx:value="circle-image" />
+                                    <String fx:value="hover-effect" />
+                                 </styleClass>
                               </ImageView>
                            </center>
                         </BorderPane>
-                        <Label prefHeight="38.0" prefWidth="163.0" styleClass="subtitle-busqueda" text="Click para cargar una foto del alimento" textAlignment="CENTER" wrapText="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                      </children>
                         </GridPane>
                         <GridPane GridPane.rowIndex="2">
@@ -359,13 +369,13 @@
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <MFXButton prefHeight="51.0" prefWidth="199.0" styleClass="button-registro" text="Registrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                                <MFXButton prefHeight="51.0" prefWidth="199.0" styleClass="button-cancelar" text="Cancelar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <MFXButton fx:id="btnRegistrar" onAction="#actionRegistrar" prefHeight="51.0" prefWidth="199.0" styleClass="button-registro" text="Registrar" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                <MFXButton onAction="#actionCancelar" prefHeight="51.0" prefWidth="199.0" styleClass="button-cancelar" text="Cancelar" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                             </children>
                         </GridPane>
                         <BorderPane prefHeight="200.0" prefWidth="200.0">
                             <left>
-                                <Label fx:id="lbTituloVentana" styleClass="title-medium" text="Registrar alimento" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblTituloVentana" styleClass="title-medium" text="Registrar alimento" BorderPane.alignment="CENTER">
                                     <padding>
                                         <Insets left="10.0" />
                                     </padding>

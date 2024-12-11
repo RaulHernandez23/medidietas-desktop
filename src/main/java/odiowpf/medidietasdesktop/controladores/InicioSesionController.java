@@ -41,6 +41,10 @@ public class InicioSesionController {
         btnEntrar.setDisable(true);
         txtCorreo.textProperty().addListener((observable, oldValue, newValue) -> validarCampos());
         txtPass.textProperty().addListener((observable, oldValue, newValue) -> validarCampos());
+
+        // Hardcoded login depuración
+        txtCorreo.setText("raulh230600@gmail.com");
+        txtPass.setText("pass");
     }
 
     @FXML
