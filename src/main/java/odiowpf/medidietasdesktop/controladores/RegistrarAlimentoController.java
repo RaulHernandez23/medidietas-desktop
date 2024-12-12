@@ -387,7 +387,7 @@ public class RegistrarAlimentoController {
     public void configurarImagenEnImageView(Image imagen) {
         if (imagen != null) {
             // Ajustar la imagen con relleno
-            Image squareImage = ConversorImagen.ajustarImagenConRelleno(imagen, 60);
+            Image squareImage = ConversorImagen.ajustarImagenConRelleno(imagen, 400);
 
             // Configurar ivImagenAlimento
             ivImagenAlimento.setImage(squareImage);
