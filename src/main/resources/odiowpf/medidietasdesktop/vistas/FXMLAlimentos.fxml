@@ -50,12 +50,12 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label styleClass="subtitle-busqueda" text="Busqueda por nombre:" GridPane.valignment="BOTTOM">
+                        <Label styleClass="subtitle-busqueda" text="Búsqueda por nombre:" GridPane.valignment="BOTTOM">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <TextField fx:id="tfBusquedaAlimento" styleClass="text-field-busqueda" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets left="10.0" right="70.0" />
                            </GridPane.margin>

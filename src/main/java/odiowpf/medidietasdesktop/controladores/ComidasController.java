@@ -34,7 +34,7 @@ public class ComidasController {
 
     private ObservableList<Comida> comidas;
     @FXML
-    private TextField txtBusqueda;
+    private TextField tfBusquedaComida;
     @FXML
     private MFXButton btnRegistrar;
 
@@ -42,6 +42,7 @@ public class ComidasController {
     public void initialize() {
         configurarTabla();
         llenarDatos();
+        configurarBusqueda();
     }
 
     private void configurarTabla() {
@@ -137,6 +138,25 @@ public class ComidasController {
         tablaComidas.setItems(comidas);
     }
 
+    private void configurarBusqueda() {
+        tfBusquedaComida.textProperty().addListener((observable, oldValue, newValue) -> filtrarComidas(newValue));
+    }
+
+    private void filtrarComidas(String nombre) {
+        if (nombre == null || nombre.isEmpty()) {
+            tablaComidas.setItems(comidas);
+            configurarTabla();
+        } else {
+            ObservableList<Comida> comidasFiltradas = FXCollections.observableArrayList();
+            for (Comida comida : comidas) {
+                if (comida.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                    comidasFiltradas.add(comida);
+                }
+            }
+            tablaComidas.setItems(comidasFiltradas);
+        }
+    }
+
     @FXML
     public void actionRegistrar(ActionEvent actionEvent) {
         try {
@@ -171,6 +191,7 @@ public class ComidasController {
             stage.setScene(new Scene(root));
             stage.setTitle("Editar Comida");
             stage.initModality(Modality.APPLICATION_MODAL);
+            tfBusquedaComida.clear();
             stage.showAndWait();
             llenarDatos();
 

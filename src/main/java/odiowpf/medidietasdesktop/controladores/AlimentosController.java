@@ -9,10 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,12 +31,16 @@ public class AlimentosController {
     @FXML
     private TableView<Alimento> tablaAlimentos;
 
+    @FXML
+    private TextField tfBusquedaAlimento;
+
     private ObservableList<Alimento> alimentos;
 
     @FXML
     public void initialize() {
         configurarTabla();
         llenarDatos();
+        configurarBusqueda();
     }
 
     private void configurarTabla() {
@@ -142,6 +143,27 @@ public class AlimentosController {
         tablaAlimentos.setItems(alimentos);
     }
 
+    private void configurarBusqueda() {
+        tfBusquedaAlimento.textProperty().addListener((observable, oldValue, newValue) -> filtrarAlimentos(newValue));
+    }
+
+    private void filtrarAlimentos(String nombre) {
+        if (nombre == null || nombre.isEmpty()) {
+            tablaAlimentos.setItems(alimentos);
+            configurarTabla();
+        } else {
+            ObservableList<Alimento> alimentosFiltrados = FXCollections.observableArrayList();
+            for (Alimento alimento : alimentos) {
+                if (alimento.getNombre().toLowerCase().contains(nombre.toLowerCase())) {
+                    alimentosFiltrados.add(alimento);
+                }
+            }
+            tablaAlimentos.setItems(alimentosFiltrados);
+
+        }
+
+    }
+
     public void actionRegistrar(ActionEvent actionEvent) {
         try {
             FXMLLoader loader =
@@ -174,6 +196,7 @@ public class AlimentosController {
             stage.setScene(new Scene(root));
             stage.setTitle("Editar Alimento");
             stage.initModality(Modality.APPLICATION_MODAL);
+            tfBusquedaAlimento.clear();
             stage.showAndWait();
             llenarDatos();
 
