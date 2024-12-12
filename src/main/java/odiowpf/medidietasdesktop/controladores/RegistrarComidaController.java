@@ -187,7 +187,7 @@ public class RegistrarComidaController {
         });
 
         tfLinkVideo.textProperty().addListener((observable, oldValue, newValue) -> {
-            String mensajeError = obtenerMensajeErrorReceta(tfLinkVideo.getText());
+            String mensajeError = obtenerMensajeErrorLink(tfLinkVideo.getText());
             if(!mensajeError.isEmpty()) {
                 lblErrorLinkVideo.setText(mensajeError);
                 lblErrorLinkVideo.setVisible(true);
@@ -248,11 +248,21 @@ public class RegistrarComidaController {
         return "";
     }
 
+    private String obtenerMensajeErrorLink(String texto) {
+        if (texto == null || texto.trim().isEmpty()) {
+            return "El campo no puede estar vacío.";
+        }
+        if (!texto.matches("https://www\\.youtube\\.com/watch\\?v=[a-zA-Z0-9_-]+(&[a-zA-Z0-9_%=-]+)*")) {
+            return "Link inválido.";
+        }
+        return "";
+    }
+
     private void activarBotonRegistrar() {
         boolean nombreComidaValido = obtenerMensajeError(tfNombreComida.getText()).isEmpty();
         boolean recetaValida = obtenerMensajeErrorReceta(tfReceta.getText()).isEmpty();
         //La implementacion de link de video aun no esta completa, falta agregar que el WebView devuelva un bool
-        boolean linkVideoValido = obtenerMensajeErrorReceta(tfLinkVideo.getText()).isEmpty();
+        boolean linkVideoValido = obtenerMensajeErrorLink(tfLinkVideo.getText()).isEmpty();
         boolean tablaLlena = !alimentos.isEmpty();
         btnRegistrar.setDisable(!nombreComidaValido
                 || !recetaValida
