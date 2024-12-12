@@ -175,11 +175,12 @@ public class AlimentosController {
             stage.setScene(new Scene(root));
             stage.setTitle("Registrar alimento");
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.showAndWait();
             llenarDatos();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 
@@ -197,11 +198,12 @@ public class AlimentosController {
             stage.setTitle("Editar Alimento");
             stage.initModality(Modality.APPLICATION_MODAL);
             tfBusquedaAlimento.clear();
+            stage.setResizable(false);
             stage.showAndWait();
             llenarDatos();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 
@@ -214,8 +216,7 @@ public class AlimentosController {
                         Constantes.ALERTA_ELIMINAR_ALIMENTO_EXITO);
                 llenarDatos();
             } else {
-                String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
-                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+                Alertas.mostrarAlertaErrorConexion();
             }
         }
     }

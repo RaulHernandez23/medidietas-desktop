@@ -172,8 +172,7 @@ public class RegistrarAlimentoController {
             ObservableList<UnidadMedida> unidadesObservableList = FXCollections.observableArrayList(listaUnidades);
             cbUnidadMedida.setItems(unidadesObservableList);
         } else {
-            Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO,
-                    respuesta.get(Constantes.KEY_MENSAJE).toString());
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 
@@ -184,8 +183,7 @@ public class RegistrarAlimentoController {
             ObservableList<Categoria> categoriasObservableList = FXCollections.observableArrayList(listaCategorias);
             cbCategoria.setItems(categoriasObservableList);
         } else {
-            Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO,
-                    respuesta.get(Constantes.KEY_MENSAJE).toString());
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 
@@ -374,13 +372,16 @@ public class RegistrarAlimentoController {
                         respuesta.get(Constantes.KEY_MENSAJE).toString());
                 cerrarVentana();
             } else {
-                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO,
-                        respuesta.get(Constantes.KEY_MENSAJE).toString());
+                String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
+                if (!"Error: null".equals(mensajeError)) {
+                    Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+                } else {
+                    Alertas.mostrarAlertaErrorConexion();
+                }
             }
         } catch (IOException e) {
             Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO,
                     "Error al procesar la imagen");
-            e.printStackTrace();
         }
     }
 
@@ -477,8 +478,7 @@ public class RegistrarAlimentoController {
                 }
             }
         } else {
-            String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
-            Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 
@@ -527,8 +527,12 @@ public class RegistrarAlimentoController {
                             respuesta.get(Constantes.KEY_MENSAJE).toString());
                     cerrarVentana();
                 } else {
-                    Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO,
-                            respuesta.get(Constantes.KEY_MENSAJE).toString());
+                    String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
+                    if (!"Error: null".equals(mensajeError)) {
+                        Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+                    } else {
+                        Alertas.mostrarAlertaErrorConexion();
+                    }
                 }
             } catch (IOException e) {
                 Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, "Error al procesar la imagen");

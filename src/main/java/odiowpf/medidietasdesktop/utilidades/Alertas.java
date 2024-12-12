@@ -40,4 +40,14 @@ public class Alertas {
         // Espera la respuesta del usuario
         return alerta.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK;
     }
+
+    public static void mostrarAlertaErrorConexion() {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setTitle(Constantes.ALERTA_ERROR_TITULO);
+        alerta.setHeaderText(null);
+        alerta.setContentText(Constantes.ERROR_CONEXION);
+        alerta.showAndWait();
+        System.exit(0);
+
+    }
 }

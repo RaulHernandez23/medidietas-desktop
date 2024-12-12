@@ -75,7 +75,7 @@ public class MenuController
                 Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
                 stageActual.close();
             } catch (IOException ioEx) {
-                ioEx.printStackTrace();
+                Alertas.mostrarAlertaErrorConexion();
             }
         }
     }
@@ -98,6 +98,11 @@ public class MenuController
         cargarVista("FXMLComidas.fxml");
     }
 
+    private void cerrarVentana() {
+        Stage stage = (Stage) paneRaiz.getScene().getWindow();
+        stage.close();
+    }
+
     private void cargarVista(String nombreFxml) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/" + nombreFxml));
@@ -106,7 +111,7 @@ public class MenuController
             paneContenido.getChildren().setAll(nuevaVista);
 
         } catch (IOException ioEx) {
-            ioEx.printStackTrace();
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 

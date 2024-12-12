@@ -138,7 +138,12 @@ public class RegistrarComidaController {
             Alertas.mostrarAlertaInformacion("Registro exitoso", resultado.get("mensaje").toString());
             cerrarVentana();
         } else {
-            Alertas.mostrarAlertaError("Error al registrar", resultado.get("mensaje").toString());
+            String mensajeError = (String) resultado.get("mensaje");
+            if (!"Error: null".equals(mensajeError)) {
+                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+            } else {
+                Alertas.mostrarAlertaErrorConexion();
+            }
         }
     }
 
@@ -264,13 +269,17 @@ public class RegistrarComidaController {
 
     private void obtenerAlimentos() {
         HashMap<String, Object> respuesta = AlimentoDAO.obtenerAlimentos();
-        ArrayList<Alimento> listaAlimentos = (ArrayList<Alimento>) respuesta.get(Constantes.KEY_OBJETO);
+        if (!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
+            ArrayList<Alimento> listaAlimentos = (ArrayList<Alimento>) respuesta.get(Constantes.KEY_OBJETO);
 
-        nombresAlimentos = FXCollections.observableArrayList();
-        for (Alimento alimento : listaAlimentos) {
-            nombresAlimentos.add(alimento.getNombre());
+            nombresAlimentos = FXCollections.observableArrayList();
+            for (Alimento alimento : listaAlimentos) {
+                nombresAlimentos.add(alimento.getNombre());
+            }
+            cbAlimentos.setItems(nombresAlimentos);
+        } else {
+            Alertas.mostrarAlertaErrorConexion();
         }
-        cbAlimentos.setItems(nombresAlimentos);
     }
 
     private void configurarTablaAlimentos(){
@@ -371,8 +380,7 @@ public class RegistrarComidaController {
                 }
             }
         } else {
-            String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
-            Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+            Alertas.mostrarAlertaErrorConexion();
         }
     }
 
@@ -398,12 +406,17 @@ public class RegistrarComidaController {
 
             Comida comidaEditada = new Comida(comidaAModificar.getId(), nombre, videoLink, receta, comidaAModificar.getEstado(), alimentos);
             HashMap<String, Object> respuesta = ComidaDAO.editarComida(comidaEditada);
-            if (!(boolean) respuesta.get("error")) {
+            if (!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
                 Alertas.mostrarAlertaInformacion(Constantes.ALERTA_MODIFICACION_COMIDA_TITULO
-                        , respuesta.get("mensaje").toString());
+                        , respuesta.get(Constantes.KEY_MENSAJE).toString());
                 cerrarVentana();
             } else {
-                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, respuesta.get("mensaje").toString());
+                String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
+                if (!"Error: null".equals(mensajeError)) {
+                    Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+                } else {
+                    Alertas.mostrarAlertaErrorConexion();
+                }
             }
         }else{
             Alertas.mostrarAlertaInformacion(Constantes.ALERTA_MODIFICACION_COMIDA_TITULO,

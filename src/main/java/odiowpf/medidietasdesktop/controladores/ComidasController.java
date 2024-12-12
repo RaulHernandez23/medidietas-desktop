@@ -169,6 +169,7 @@ public class ComidasController {
             stage.setScene(new Scene(root));
             stage.setTitle("Registrar comida");
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.showAndWait();
             llenarDatos();
 
@@ -192,6 +193,7 @@ public class ComidasController {
             stage.setTitle("Editar Comida");
             stage.initModality(Modality.APPLICATION_MODAL);
             tfBusquedaComida.clear();
+            stage.setResizable(false);
             stage.showAndWait();
             llenarDatos();
 
@@ -209,8 +211,7 @@ public class ComidasController {
                         Constantes.ALERTA_ELIMINAR_COMIDA_EXITO);
                 llenarDatos();
             } else {
-                String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
-                Alertas.mostrarAlertaError(Constantes.ALERTA_ERROR_TITULO, mensajeError);
+                Alertas.mostrarAlertaErrorConexion();
             }
         }
 
