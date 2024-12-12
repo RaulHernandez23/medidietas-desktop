@@ -284,7 +284,9 @@ public class RegistrarComidaController {
 
             nombresAlimentos = FXCollections.observableArrayList();
             for (Alimento alimento : listaAlimentos) {
-                nombresAlimentos.add(alimento.getNombre());
+                if (alimento.isEstado()) {
+                    nombresAlimentos.add(alimento.getNombre());
+                }
             }
             cbAlimentos.setItems(nombresAlimentos);
         } else {
@@ -294,6 +296,7 @@ public class RegistrarComidaController {
 
     private void configurarTablaAlimentos(){
         alimentos = new HashMap<>();
+        tvTablaAlimentos.getColumns().clear();
 
         TableColumn<Map.Entry<String, Double>, String> nombreColumn = new TableColumn<>("Nombre");
         nombreColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getKey()));
@@ -403,7 +406,18 @@ public class RegistrarComidaController {
         boolean linkVideoIgual = tfLinkVideo.getText().equals(comidaAModificar.getPreparacionVideo());
         boolean recetaIgual = tfReceta.getText().equals(comidaAModificar.getReceta());
 
-        boolean alimentosIguales = alimentos.equals(comidaAModificar.getAlimentos());
+        boolean alimentosIguales = true;
+        if (alimentos.size() != comidaAModificar.getAlimentos().size()) {
+            alimentosIguales = false;
+        } else {
+            for (Map.Entry<String, Double> entry : alimentos.entrySet()) {
+                if (!comidaAModificar.getAlimentos().containsKey(entry.getKey()) ||
+                        !comidaAModificar.getAlimentos().get(entry.getKey()).equals(entry.getValue())) {
+                    alimentosIguales = false;
+                    break;
+                }
+            }
+        }
 
         return nombreIgual && linkVideoIgual && recetaIgual && alimentosIguales;
     }

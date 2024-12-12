@@ -48,6 +48,5 @@ public class Alertas {
         alerta.setContentText(Constantes.ERROR_CONEXION);
         alerta.showAndWait();
         System.exit(0);
-
     }
 }
