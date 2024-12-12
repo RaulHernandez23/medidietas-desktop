@@ -338,7 +338,7 @@ public class RegistrarAlimentoController {
 
     private void registrarAlimento(){
         try {
-            String nombre = tfNombreAlimento.getText().toLowerCase();;
+            String nombre = tfNombreAlimento.getText();
             String marca = tfMarca.getText();
             double tamanoRacion = Double.parseDouble(tfTamanoRacion.getText());
             int calorias = Integer.parseInt(tfCalorias.getText());
@@ -485,7 +485,7 @@ public class RegistrarAlimentoController {
     private void modificarAlimento() {
         if (!compararAlimentoConCampos()) {
             try {
-                String nombre = tfNombreAlimento.getText().toLowerCase();
+                String nombre = tfNombreAlimento.getText();
                 String marca = tfMarca.getText();
                 double tamanoRacion = Double.parseDouble(tfTamanoRacion.getText());
                 int calorias = Integer.parseInt(tfCalorias.getText());
