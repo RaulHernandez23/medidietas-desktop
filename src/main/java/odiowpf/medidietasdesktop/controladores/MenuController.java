@@ -47,6 +47,7 @@ public class MenuController
 
     @javafx.fxml.FXML
     public void initialize() {
+        actionAlimentos(null);
     }
 
     public void cargarDatos(ExpertoNutricion experto, Image fotoPerfil) {
