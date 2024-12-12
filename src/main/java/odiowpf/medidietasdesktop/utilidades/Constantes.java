@@ -32,7 +32,7 @@ public class Constantes {
     public static final String ALERTA_MODIFICACION_ALIMENTO_CONTENIDO = "El alimento se modificó correctamente.";
     public static final String ALERTA_ELIMINAR_ALIMENTO = "¿Estas seguro de eliminar este alimento?";
     public static final String ALERTA_ELIMINAR_ALIMENTO_EXITO = "El alimento fue eliminado correctamente";
-
+    public static final String ALERTA_CONFIRMACION_LOGOUT = "¿Esta seguro de cerrar sesión?";
     //Titulos
     public static final String TITULO_REGISTRAR_COMIDA = "Registrar Comida";
     public static final String TITULO_MODIFICAR_COMIDA = "Modificar comida";
@@ -42,4 +42,5 @@ public class Constantes {
     public static final String TITULO_MODIFICAR_ALIMENTO = "Modificar alimento";
 
     public static final Object ERROR_CONEXION = "No se pudo conectar a la red, intentelo de nuevo más tarde";
+
 }

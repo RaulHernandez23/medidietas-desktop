@@ -17,6 +17,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import odiowpf.medidietasdesktop.daos.ExpertoNutricionDAO;
 import odiowpf.medidietasdesktop.modelos.ExpertoNutricion;
+import odiowpf.medidietasdesktop.utilidades.Alertas;
+import odiowpf.medidietasdesktop.utilidades.Constantes;
 import odiowpf.medidietasdesktop.utilidades.ConversorImagen;
 
 import java.io.IOException;
@@ -57,23 +59,25 @@ public class MenuController
 
     @javafx.fxml.FXML
     public void actionSalir(ActionEvent actionEvent) {
-        HashMap<String, Object> respuesta = ExpertoNutricionDAO.logOut();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLInicioSesion.fxml"));
-            Scene scene = new Scene(loader.load(), 1280, 720);
+        if(Alertas.mostrarAlertaConfirmacion(Constantes.ALERTA_CONFIRMACION_TITULO,
+                Constantes.ALERTA_CONFIRMACION_LOGOUT)) {
+            HashMap<String, Object> respuesta = ExpertoNutricionDAO.logOut();
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLInicioSesion.fxml"));
+                Scene scene = new Scene(loader.load(), 1280, 720);
 
-            Stage stage = new Stage();
-            stage.setTitle("Inicio de sesión");
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
+                Stage stage = new Stage();
+                stage.setTitle("Inicio de sesión");
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.show();
 
-            Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
-            stageActual.close();
-        } catch (IOException ioEx) {
-            ioEx.printStackTrace();
+                Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
+                stageActual.close();
+            } catch (IOException ioEx) {
+                ioEx.printStackTrace();
+            }
         }
-
     }
 
     @javafx.fxml.FXML
