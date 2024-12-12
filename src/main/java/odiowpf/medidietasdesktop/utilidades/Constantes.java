@@ -41,4 +41,5 @@ public class Constantes {
     public static final String ALERTA_REGISTRO_ALIMENTO_TITULO = "Registro de alimento";
     public static final String TITULO_MODIFICAR_ALIMENTO = "Modificar alimento";
 
+    public static final Object ERROR_CONEXION = "No se pudo conectar a la red, intentelo de nuevo más tarde";
 }

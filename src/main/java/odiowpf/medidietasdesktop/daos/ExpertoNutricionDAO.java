@@ -38,30 +38,37 @@ public class ExpertoNutricionDAO {
             HttpResponse<String> respuestaHttp = cliente.send(solicitudHttp, HttpResponse.BodyHandlers.ofString());
             String cuerpoRespuesta = respuestaHttp.body();
             JSONObject jsonObject = new JSONObject(cuerpoRespuesta);
-            JSONObject expertoJson = jsonObject.getJSONObject("experto");
 
-            ExpertoNutricion experto = new ExpertoNutricion(
-                    expertoJson.getInt("id"),
-                    expertoJson.getString("nombre"),
-                    expertoJson.getString("apellido_paterno"),
-                    expertoJson.getString("apellido_materno"),
-                    expertoJson.getString("contrasena"),
-                    expertoJson.getString("correo"),
-                    Constantes.FORMATO_FECHA.parse(expertoJson.getString("fecha_nacimiento")),
-                    expertoJson.getString("foto"),
-                    expertoJson.getString("educacion"),
-                    expertoJson.getString("perfil_profesional")
-            );
+            if (jsonObject.has("experto")) {
+                JSONObject expertoJson = jsonObject.getJSONObject("experto");
 
-            Image foto = ServicioImagenPerfil.descargarImagenPerfil(experto.getFoto());
+                ExpertoNutricion experto = new ExpertoNutricion(
+                        expertoJson.getInt("id"),
+                        expertoJson.getString("nombre"),
+                        expertoJson.getString("apellido_paterno"),
+                        expertoJson.getString("apellido_materno"),
+                        expertoJson.getString("contrasena"),
+                        expertoJson.getString("correo"),
+                        Constantes.FORMATO_FECHA.parse(expertoJson.getString("fecha_nacimiento")),
+                        expertoJson.getString("foto"),
+                        expertoJson.getString("educacion"),
+                        expertoJson.getString("perfil_profesional")
+                );
 
-            GestorToken.TOKEN = respuestaHttp.headers().firstValue("x-token").get();
+                Image foto = ServicioImagenPerfil.descargarImagenPerfil(experto.getFoto());
 
-            respuesta.put(Constantes.KEY_ERROR, false);
-            respuesta.put(Constantes.KEY_OBJETO, experto);
-            respuesta.put(Constantes.KEY_IMAGEN, foto);
+                GestorToken.TOKEN = respuestaHttp.headers().firstValue("x-token").get();
+
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put(Constantes.KEY_OBJETO, experto);
+                respuesta.put(Constantes.KEY_IMAGEN, foto);
+            }
+
+            if (jsonObject.has("msg")) {
+                respuesta.put(Constantes.KEY_MENSAJE, jsonObject.getString("msg"));
+            }
         } catch (Exception ex) {
-            respuesta.put(Constantes.KEY_MENSAJE, "Error: " + ex.getMessage());
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.ERROR_CONEXION);
             System.out.println(ex.getMessage());
         }
 

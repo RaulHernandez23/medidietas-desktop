@@ -53,7 +53,8 @@ public class InicioSesionController {
 
         if(!(boolean) respuesta.get(Constantes.KEY_ERROR)) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml"));
+                FXMLLoader loader =
+                        new FXMLLoader(getClass().getResource("/odiowpf/medidietasdesktop/vistas/FXMLMenu.fxml"));
                 Scene scene = new Scene(loader.load(), 1280, 720);
                 MenuController controlador = loader.getController();
                 controlador.cargarDatos((ExpertoNutricion) respuesta.get(Constantes.KEY_OBJETO),
@@ -68,13 +69,21 @@ public class InicioSesionController {
                 Stage stageActual = (Stage) paneRaiz.getScene().getWindow();
                 stageActual.close();
 
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
-        else {
-            lblError.setText("Usuario y/o contraseña incorrectos. Por favor, verifíquelos");
+        else if (respuesta.get(Constantes.KEY_ERROR).equals(true)) {
+            String mensajeError = (String) respuesta.get(Constantes.KEY_MENSAJE);
+            if (mensajeError.equals(Constantes.ERROR_CONEXION)) {
+                lblError.setText(mensajeError);
+                borderMensaje.setStyle("-fx-border-color: red; -fx-background-color: red;");
+                lblError.setStyle("-fx-text-fill: white;");
+            } else {
+                lblError.setText(mensajeError + " Por favor, verifíquelos.");
+                borderMensaje.setStyle("");
+                lblError.setStyle("");
+            }
             borderMensaje.setVisible(true);
         }
     }
